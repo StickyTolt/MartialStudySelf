@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.phone1000.martialstudyself.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#fff"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/icon"/>
+
+        <ImageView
+            android:id="@+id/main_search"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:layout_alignBottom="@+id/main_personal"
+            android:src="@mipmap/icon"/>
+
+        <ImageView
+            android:id="@+id/main_personal"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/icon" />
+
+
+
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="60dp"/>
+
+
+    <RadioGroup
+        android:id="@+id/main_controller"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/home_page"
+            style="@style/Btn_style"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:checked="true"
+            android:text="首页"
+            android:textColor="@drawable/text_selector" />
+
+        <RadioButton
+            android:id="@+id/book"
+            style="@style/Btn_style"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:text="功法秘籍"
+            android:textColor="@drawable/text_selector" />
+
+        <RadioButton
+            android:id="@+id/martial_hundred"
+            style="@style/Btn_style"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:text="武术百科"
+            android:textColor="@drawable/text_selector" />
+
+        <RadioButton
+            android:id="@+id/talk_martial"
+            style="@style/Btn_style"
+            android:drawableTop="@mipmap/ic_launcher"
+            android:text="论武堂"
+            android:textColor="@drawable/text_selector" />
+    </RadioGroup>
+
+</FrameLayout>
