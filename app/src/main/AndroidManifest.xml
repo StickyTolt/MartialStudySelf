@@ -21,7 +21,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".bases.BaseActivity" />
-        <activity android:name=".activitys.ItemActivity"></activity>
+        <activity android:name=".activitys.ItemActivity" />
+        <activity android:name=".activitys.LogInActivity" />
+        <activity android:name=".activitys.ForgetActivity" />
+        <activity android:name=".activitys.RegisterActivity"></activity>
     </application>
 
 </manifest>

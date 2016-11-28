@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">MartialStudySelf</string>
     <string name="comment_condition">帖子情况</string>
+    <string name="login_hint_user">请输入账号/邮箱</string>
+    <string name="login_hint_password">请输入密码</string>
 </resources>

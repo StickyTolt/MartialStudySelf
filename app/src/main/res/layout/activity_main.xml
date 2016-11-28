@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.phone1000.martialstudyself.MainActivity">
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#fff"
-        android:gravity="center_vertical">
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@mipmap/icon"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff"
+            android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/main_search"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="60dp"
-            android:layout_alignBottom="@+id/main_personal"
-            android:src="@mipmap/icon"/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/icon" />
 
-        <ImageView
-            android:id="@+id/main_personal"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentRight="true"
-            android:src="@mipmap/icon" />
+            <ImageView
+                android:id="@+id/main_search"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignBottom="@+id/main_personal"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="60dp"
+                android:src="@mipmap/icon" />
+
+            <ImageView
+                android:id="@+id/main_personal"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/icon" />
 
 
+        </RelativeLayout>
 
-
-    </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 
     <FrameLayout
@@ -44,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="80dp"
-        android:layout_marginTop="60dp"/>
+        android:layout_marginTop="60dp" />
 
 
     <RadioGroup
@@ -57,8 +63,8 @@
         <RadioButton
             android:id="@+id/home_page"
             style="@style/Btn_style"
-            android:drawableTop="@mipmap/ic_launcher"
             android:checked="true"
+            android:drawableTop="@mipmap/ic_launcher"
             android:text="首页"
             android:textColor="@drawable/text_selector" />
 
@@ -72,14 +78,14 @@
         <RadioButton
             android:id="@+id/martial_hundred"
             style="@style/Btn_style"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@drawable/cyclopedia_icom"
             android:text="武术百科"
             android:textColor="@drawable/text_selector" />
 
         <RadioButton
             android:id="@+id/talk_martial"
             style="@style/Btn_style"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@drawable/comment_icon"
             android:text="论武堂"
             android:textColor="@drawable/text_selector" />
     </RadioGroup>

@@ -108,6 +108,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 return true;
             }
         }
+        BaseApp.removeAllActivity();
         return super.onKeyDown(keyCode, event);
     }
 }
