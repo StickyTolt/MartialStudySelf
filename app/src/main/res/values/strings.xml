@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MartialStudySelf</string>
+    <string name="comment_condition">帖子情况</string>
 </resources>

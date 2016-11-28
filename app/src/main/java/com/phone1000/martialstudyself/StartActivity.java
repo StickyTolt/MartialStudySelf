@@ -1,12 +1,13 @@
 package com.phone1000.martialstudyself;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-public class StartActivity extends AppCompatActivity {
+import com.phone1000.martialstudyself.bases.BaseActivity;
+
+public class StartActivity extends BaseActivity {
 
     private Handler mHandler = new Handler(){
         @Override
@@ -22,6 +23,6 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        mHandler.sendEmptyMessageDelayed(0x200,3000);
+        mHandler.sendEmptyMessageDelayed(0x200,100);
     }
 }

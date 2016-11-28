@@ -1,16 +1,14 @@
 package com.phone1000.martialstudyself;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.phone1000.martialstudyself.bases.BaseActivity;
 import com.phone1000.martialstudyself.fragment.BookFragment;
 import com.phone1000.martialstudyself.fragment.HomePageFargment;
 import com.phone1000.martialstudyself.fragment.MartialHundredFragment;
@@ -23,7 +21,7 @@ import org.xutils.x;
 import java.lang.reflect.InvocationTargetException;
 
 @ContentView(R.layout.activity_main)
-public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     @ViewInject(R.id.main_controller)
     private RadioGroup mController;
