@@ -57,8 +57,9 @@
         <RadioButton
             android:id="@+id/home_page"
             style="@style/Btn_style"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@drawable/home_selector"
             android:checked="true"
+            android:paddingTop="10dp"
             android:text="首页"
             android:textColor="@drawable/text_selector" />
 

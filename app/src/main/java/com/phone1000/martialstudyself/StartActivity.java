@@ -14,6 +14,7 @@ public class StartActivity extends AppCompatActivity {
             if (msg.what == 0x200) {
                 Intent intent = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         }
     };

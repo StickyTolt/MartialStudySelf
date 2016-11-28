@@ -3,10 +3,8 @@ package com.phone1000.martialstudyself;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -100,12 +98,12 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (ISBACK == 0) {
-                Toast.makeText(MainActivity.this, "再按一次退出蜗牛Talk", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "再按一次退出自学武术", Toast.LENGTH_SHORT).show();
                 ISBACK++;
                 backTime = System.currentTimeMillis();
                 return true;
             }else if (System.currentTimeMillis() - backTime >1000){
-                Toast.makeText(MainActivity.this, "再按一次退出蜗牛Talk", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "再按一次退出自学武术", Toast.LENGTH_SHORT).show();
                 backTime = System.currentTimeMillis();
                 return true;
             }
