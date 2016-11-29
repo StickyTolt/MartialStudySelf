@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                 return true;
             }
         }
+        BaseApp.removeAllActivity();
         return super.onKeyDown(keyCode, event);
     }
 }

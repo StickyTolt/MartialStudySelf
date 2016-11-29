@@ -6,4 +6,12 @@
     <color name="textNo">#000</color>
     <color name="textYes">#00f</color>
     <color name="progress">#38d47c</color>
+    <color name="grayDefault">#c6c6c6</color>
+    <color name="blueDefault">#00f</color>
+    <color name="blackDefault">#202020</color>
+    <color name="blackText">#5c5c5c</color>
+
+    <color name="blueLove">#0ea5fc</color>
+    <color name="colorSkin">#f2efef</color>
+
 </resources>
