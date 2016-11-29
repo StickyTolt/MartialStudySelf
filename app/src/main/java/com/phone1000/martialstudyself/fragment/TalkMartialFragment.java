@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 
 import com.phone1000.martialstudyself.BaseApp;
 import com.phone1000.martialstudyself.R;
+import com.phone1000.martialstudyself.activitys.CommentActivity;
 import com.phone1000.martialstudyself.activitys.ItemActivity;
 import com.phone1000.martialstudyself.activitys.LogInActivity;
 import com.phone1000.martialstudyself.adapters.CommentAdapter;
@@ -111,6 +112,8 @@ public class TalkMartialFragment extends Fragment implements ICommentItem, View.
                             create();
             //显示
             alertDialog.show();
+        }else {
+            startActivity(new Intent(getActivity(), CommentActivity.class));
         }
     }
 
