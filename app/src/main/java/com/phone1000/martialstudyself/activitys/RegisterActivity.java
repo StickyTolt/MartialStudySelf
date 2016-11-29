@@ -82,6 +82,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                             edit.putString(name, password);
                             edit.putString(mail,name+"|"+password);
                             edit.putString(name+password , mail);
+
                             edit.commit();
                             finish();
                         }

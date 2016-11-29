@@ -1,7 +1,6 @@
 package com.phone1000.martialstudyself.adapeters;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -159,6 +158,8 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
             x.view().inject(this, itemView);
         }
     }
+
+
 
     public static class ViewHolderChild {
 

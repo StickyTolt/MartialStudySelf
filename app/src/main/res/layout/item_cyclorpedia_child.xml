@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/item_cyclopedia_child_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="9dp"
+        android:src="@mipmap/kungfu1" />
+
+    <TextView
+        android:id="@+id/item_cyclopedia_child_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/item_cyclopedia_child_image"
+        android:gravity="center_vertical"
+        android:lines="2"
+        android:text="失去的五菱--粤西红圈"
+        android:textColor="@color/blackDefault"
+        android:textSize="16dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/item_cyclopedia_child_title"
+        android:layout_below="@+id/item_cyclopedia_child_title"
+        android:layout_marginTop="13dp">
+
+        <TextView
+            android:id="@+id/item_cyclopedia_child_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中华武术网"
+            android:textColor="@color/grayText"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/item_cyclopedia_child_qipao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:drawableLeft="@mipmap/qipao"
+            android:gravity="center"
+            android:text="  11"
+            android:textColor="@color/grayText"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/item_cyclopedia_child_see_count"
+            android:layout_width="wrap_content"
+            android:text="  111111"
+            android:textColor="@color/grayText"
+            android:drawableLeft="@mipmap/see"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:layout_marginLeft="22dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_below="@+id/item_cyclopedia_child_image"
+        android:layout_width="match_parent"
+        android:background="@color/colorSkin"
+        android:layout_height="1dp"/>
+
+</RelativeLayout>

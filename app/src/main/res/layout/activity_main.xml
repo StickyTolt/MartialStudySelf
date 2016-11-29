@@ -73,14 +73,14 @@
         <RadioButton
             android:id="@+id/martial_hundred"
             style="@style/Btn_style"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@drawable/cyclopedia_icon"
             android:text="武术百科"
             android:textColor="@drawable/text_selector" />
 
         <RadioButton
             android:id="@+id/talk_martial"
             style="@style/Btn_style"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@drawable/comment_icon"
             android:text="论武堂"
             android:textColor="@drawable/text_selector" />
     </RadioGroup>

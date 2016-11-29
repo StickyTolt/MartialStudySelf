@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorSkin"
     android:orientation="vertical"
     tools:context="com.phone1000.martialstudyself.activitys.CommentActivity">
     <TextView
@@ -10,63 +12,84 @@
         android:background="@color/grayDefault"
         android:layout_height="1dp" />
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        app:cardElevation="1dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/whiteLove"
+            android:layout_height="45dp">
+
+            <TextView
+                android:id="@+id/comment_back_text"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="返回"
+                android:textColor="@color/blueLove"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/comment_publish_text"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="发表"
+                android:textColor="@color/blueLove"
+                android:textSize="17dp" />
+
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/whiteLove"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/comment_title"
+            android:layout_margin="6dp"
+            android:backgroundTint="@color/whiteLove"
+            android:background="@null"
+            android:hint="标题"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
 
         <TextView
-            android:id="@+id/comment_back_text"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="返回"
-            android:textColor="@color/blueLove"
-            android:textSize="17dp" />
+            android:layout_width="match_parent"
+            android:background="@color/grayDefault"
+            android:layout_height="1dp" />
 
+        <EditText
+            android:id="@+id/comment_content"
+            android:hint="内容..."
+            android:backgroundTint="@color/whiteLove"
+            android:textSize="15dp"
+            android:layout_margin="6dp"
+            android:gravity="left"
+            android:lines="4"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/comment_publish_text"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="发表"
-            android:textColor="@color/blueLove"
-            android:textSize="17dp" />
-
+            android:layout_width="match_parent"
+            android:background="@color/grayDefault"
+            android:layout_height="1dp" />
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/comment_title"
-        android:layout_margin="6dp"
-        android:background="@null"
-        android:hint="标题"
-        android:textSize="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="35dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:background="@color/grayDefault"
-        android:layout_height="1dp" />
-
-    <EditText
-        android:id="@+id/comment_content"
-        android:hint="内容..."
-        android:textSize="15dp"
-        android:layout_margin="6dp"
-        android:gravity="left"
-        android:lines="4"
-        android:background="@null"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:layout_width="match_parent"
-        android:background="@color/grayDefault"
-        android:layout_height="1dp" />
 
 </LinearLayout>

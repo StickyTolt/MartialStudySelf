@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.phone1000.martialstudyself.BaseApp;
 import com.phone1000.martialstudyself.R;
 import com.phone1000.martialstudyself.bases.BaseActivity;
 
@@ -77,13 +78,17 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener,
                     SharedPreferences user = getSharedPreferences("user", Context.MODE_PRIVATE);
                     String nameStr = user.getString("userName", "null");
                     String passwordStr = user.getString(userName, "null");
+                    SharedPreferences.Editor edit = user.edit();
                     if (passwordStr.equals("null")) {
                         Toast.makeText(LogInActivity.this, "账号不存在，请重新输入", Toast.LENGTH_SHORT).show();
                     }else if (!passwordStr.equals(userPassword)){
                         Toast.makeText(LogInActivity.this, "密码错误，请重新输入", Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(LogInActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                        user.edit().putString("isLogIn","true").commit();
+//                        edit.putString("isLogIn","true");
+                        edit.putBoolean("islogin",true);
+                        edit.commit();
+                        BaseApp.setIsLogIn(true);
                         finish();
                     }
                 }

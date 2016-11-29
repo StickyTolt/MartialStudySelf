@@ -18,6 +18,9 @@ public class BaseApp extends Application {
     private static List<Activity> data ;
     public static boolean isLogIn = false ;
 
+    public static void setIsLogIn(boolean isLogIn) {
+        BaseApp.isLogIn = isLogIn;
+    }
 
     @Override
     public void onCreate() {
@@ -26,11 +29,15 @@ public class BaseApp extends Application {
         x.Ext.setDebug(true);
         data = new ArrayList<>();
         SharedPreferences user = getSharedPreferences("user", Context.MODE_PRIVATE);
-        if (user.getString("isLogIn","false").equals("false")) {
+
+        /*if (user.getString("isLogIn","false").equals("false")) {
             isLogIn=false;
         }else if (user.getString("isLogIn","false").equals("true")){
             isLogIn = true ;
-        }
+        }*/
+
+        isLogIn = user.getBoolean("islogin",false);
+
     }
 
     public static void addActivity(Activity activity){

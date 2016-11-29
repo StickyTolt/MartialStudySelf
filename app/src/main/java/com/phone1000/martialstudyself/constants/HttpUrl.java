@@ -14,4 +14,7 @@ public class HttpUrl {
     public static final String COMMENT_COMMENT_START = "http://m.wushu520.com/Topic/GetCommentList?id=";
     public static final String COMMENT_COMMENT_END = "&page=1&reply_type=1";
 
+    public static final String CYCLOPEDIA_URL = "http://m.wushu520.com/Baike/IndexForAPP";
+
+
 }

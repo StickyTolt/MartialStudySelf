@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <View
+        android:background="@color/colorSkin"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        app:cardElevation="1dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/item_cyclorpedia_parent_title"
+                android:layout_width="wrap_content"
+                android:text="最新功法"
+                android:textColor="@color/blackDefault"
+                android:gravity="center"
+                android:textSize="21dp"
+                android:layout_marginLeft="11dp"
+                android:layout_height="40dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:id="@+id/item_cyclorpedia_parent_more"
+                android:text="更多"
+                android:textColor="@color/blueLove"
+                android:gravity="center"
+                android:drawableRight="@mipmap/go"
+                android:layout_marginRight="11dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/colorSkin"
+        android:layout_height="1dp"/>
+
+
+
+
+
+</LinearLayout>

@@ -23,6 +23,7 @@ import com.phone1000.martialstudyself.activitys.LogInActivity;
 import com.phone1000.martialstudyself.adapters.CommentAdapter;
 import com.phone1000.martialstudyself.constants.HttpUrl;
 import com.phone1000.martialstudyself.interfaces.ICommentItem;
+import com.phone1000.martialstudyself.interfaces.INotifyAddRes;
 import com.phone1000.martialstudyself.utils.JsonParseAndUpdate;
 
 import org.xutils.view.annotation.ContentView;
@@ -33,7 +34,7 @@ import org.xutils.x;
  * Created by 马金利 on 2016/11/27.
  */
 @ContentView(R.layout.talk_martial_fragment)
-public class TalkMartialFragment extends Fragment implements ICommentItem, View.OnClickListener {
+public class TalkMartialFragment extends Fragment implements ICommentItem, View.OnClickListener, INotifyAddRes {
     @ViewInject(R.id.talk_martial_fragment_rv)
     private RecyclerView mRV;
     @ViewInject(R.id.talk_martial_youbiao)
@@ -63,6 +64,7 @@ public class TalkMartialFragment extends Fragment implements ICommentItem, View.
         adapter = new CommentAdapter(null, getContext());
         mRV.setAdapter(adapter);
         adapter.setCommentItem(this);
+        adapter.setiNotifyAddRes(this);
         JsonParseAndUpdate.commentJPAU(adapter, HttpUrl.COMMENT_URL + PAGE_NUM);
         youbiao.setOnClickListener(this);
 
@@ -117,4 +119,9 @@ public class TalkMartialFragment extends Fragment implements ICommentItem, View.
         }
     }
 
+    @Override
+    public void addResForI() {
+        PAGE_NUM++ ;
+        JsonParseAndUpdate.commentJPAA(adapter,HttpUrl.COMMENT_URL+PAGE_NUM);
+    }
 }
