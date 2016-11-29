@@ -15,6 +15,7 @@ public class StartActivity extends BaseActivity {
             if (msg.what == 0x200) {
                 Intent intent = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         }
     };

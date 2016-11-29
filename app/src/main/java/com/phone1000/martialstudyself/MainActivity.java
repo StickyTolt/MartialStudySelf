@@ -1,14 +1,14 @@
 package com.phone1000.martialstudyself;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.phone1000.martialstudyself.bases.BaseActivity;
 import com.phone1000.martialstudyself.fragment.BookFragment;
 import com.phone1000.martialstudyself.fragment.HomePageFargment;
 import com.phone1000.martialstudyself.fragment.MartialHundredFragment;
@@ -21,7 +21,7 @@ import org.xutils.x;
 import java.lang.reflect.InvocationTargetException;
 
 @ContentView(R.layout.activity_main)
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     @ViewInject(R.id.main_controller)
     private RadioGroup mController;
@@ -98,12 +98,12 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (ISBACK == 0) {
-                Toast.makeText(MainActivity.this, "再按一次退出蜗牛Talk", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "再按一次退出自学武术", Toast.LENGTH_SHORT).show();
                 ISBACK++;
                 backTime = System.currentTimeMillis();
                 return true;
             }else if (System.currentTimeMillis() - backTime >1000){
-                Toast.makeText(MainActivity.this, "再按一次退出蜗牛Talk", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "再按一次退出自学武术", Toast.LENGTH_SHORT).show();
                 backTime = System.currentTimeMillis();
                 return true;
             }

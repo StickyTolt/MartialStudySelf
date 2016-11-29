@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.phone1000.martialstudyself">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".BaseApp"
@@ -12,7 +12,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+
+        </activity>
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,12 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".bases.BaseActivity" />
-        <activity android:name=".activitys.ItemActivity" />
-        <activity android:name=".activitys.LogInActivity" />
-        <activity android:name=".activitys.ForgetActivity" />
-        <activity android:name=".activitys.RegisterActivity" />
-        <activity android:name=".activitys.CommentActivity"></activity>
+        <activity android:name=".activitys.LogInActivity"/>
+        <activity android:name=".activitys.ForgetActivity"/>
+        <activity android:name=".activitys.ItemActivity"/>
+        <activity android:name=".activitys.RegisterActivity"/>
     </application>
 
 </manifest>
