@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:textColor="#000"
             android:lines="2" />
 
         <LinearLayout
@@ -60,13 +61,29 @@
                 android:textSize="10sp"/>
         </LinearLayout>
     </RelativeLayout>
-    <ImageView
-        android:id="@+id/child_more"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:src="@mipmap/tk"
         android:layout_marginTop="80dp"
-        android:layout_centerHorizontal="true"/>
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/child_more"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:src="@mipmap/tk" />
+
+        <TextView
+            android:id="@+id/child_jump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@mipmap/right"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="查看更多"
+            android:textColor="#1b98d7"/>
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.phone1000.martialstudyself.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,14 +18,16 @@ import android.widget.LinearLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.phone1000.martialstudyself.R;
+import com.phone1000.martialstudyself.activitys.HomePositionActivity;
+import com.phone1000.martialstudyself.activitys.HomeSecondActivity;
 import com.phone1000.martialstudyself.adapeters.HomeElvAdapter;
 import com.phone1000.martialstudyself.adapeters.HomeViewPagerAdapter;
 import com.phone1000.martialstudyself.constants.HttpUrl;
+import com.phone1000.martialstudyself.constants.MyUrl;
 import com.phone1000.martialstudyself.model.HomeModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ContentView;
@@ -39,7 +42,7 @@ import java.util.List;
  * Created by 马金利 on 2016/11/27.
  */
 @ContentView(R.layout.home_page_fragment)
-public class HomePageFargment extends Fragment implements ViewPager.OnPageChangeListener {
+public class HomePageFargment extends Fragment implements ViewPager.OnPageChangeListener, ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener {
 
     @ViewInject(R.id.home_page_elv)
     private ExpandableListView mElv;
@@ -54,7 +57,7 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
     private LinearLayout mPoint;
     private int curIndex = 0;
 
-    int[] imgId = {R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
+    int[] imgId = {R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher,R.mipmap.ic_launcher};
 
     @Nullable
     @Override
@@ -109,8 +112,7 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
                     List<HomeModel> data = gson.fromJson(jsonArray.toString(), type);
                     Log.e(TAG, "onSuccess: " + data );
                     for (int i = 0; i < data.get(0).getList().size(); i++) {
-                        x.image().bind(imgList.get(i),HttpUrl.HEADER_URL + data.get(0).getList().get(i).getPic());
-                        Log.e(TAG, "onSuccess: " + HttpUrl.HEADER_URL + data.get(0).getList().get(i).getPic() );
+                        x.image().bind(imgList.get(i), MyUrl.HEADER_URL + "/"+  data.get(0).getList().get(i).getPic());
                         initPoint();
                     }
                     mPoint.getChildAt(0).setBackgroundResource(R.mipmap.dot_enable);
@@ -118,6 +120,9 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
                     mViewPager.setAdapter(mVPadapter);
                     mVPadapter.notifyDataSetChanged();
                     adapter.updateRes(data);
+                    for (int i = 0; i < adapter.getGroupCount(); i++) {
+                        mElv.expandGroup(i);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -149,10 +154,8 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
         adapter = new HomeElvAdapter(getContext(),null);
         mElv.setAdapter(adapter);
         mElv.addHeaderView(mHeaderView);
-
-        for (int i = 0; i < adapter.getGroupCount(); i++) {
-            mElv.expandGroup(i);
-        }
+        mElv.setOnChildClickListener(this);
+        mElv.setOnGroupClickListener(this);
 
     }
 
@@ -173,5 +176,31 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+        if (groupPosition == 3) {
+            String info_id = adapter.getChild(groupPosition +1, childPosition).getTopic_id();
+            Intent intent = new Intent(getContext(), HomeSecondActivity.class);
+            intent.putExtra("id",info_id);
+            Log.e(TAG, "onChildClick: " + info_id);
+            startActivity(intent);
+        }else {
+            String topic_id = adapter.getChild(groupPosition+1, childPosition).getInfo_id();
+            Intent intent = new Intent(getContext(), HomePositionActivity.class);
+            intent.putExtra("id",topic_id);
+            Log.e(TAG, "onChildClick: " + topic_id );
+            startActivity(intent);
+        }
+
+
+        return false;
+    }
+
+    @Override
+    public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+        return true;
     }
 }

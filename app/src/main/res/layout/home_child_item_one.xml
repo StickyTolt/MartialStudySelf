@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+
+    <TextView
+        android:id="@+id/child_title_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textColor="#000"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:lines="2" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/child_title_one"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/child_author_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="中华武术网111"
+            android:textColor="#9e9797"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/child_reply_count_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:drawableLeft="@mipmap/talk"
+            android:text="0"
+            android:textColor="#9e9797"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center">
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/child_more_one"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout"
+        android:src="@mipmap/tk" />
+
+    <TextView
+        android:id="@+id/child_jump_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:drawableRight="@mipmap/right"
+        android:gravity="center"
+        android:text="查看更多"
+        android:textColor="#1b98d7" />
+
+
+</RelativeLayout>
