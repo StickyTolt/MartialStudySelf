@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/book_top_title0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="武术门派"
+            android:textColor="@color/textNo"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/book_top_body0"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_below="@id/book_top_title0"
+            android:layout_marginTop="1dp"></android.support.v4.view.ViewPager>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/book_top_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="武术器械"
+            android:textColor="@color/textNo"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/book_top_body1"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_below="@id/book_top_title1"
+            android:layout_marginTop="1dp"></android.support.v4.view.ViewPager>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/book_top_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="外国武功"
+            android:textColor="@color/textNo"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/book_top_body2"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_below="@id/book_top_title2"
+            android:layout_marginTop="1dp"></android.support.v4.view.ViewPager>
+    </RelativeLayout>
+
+    <View
+        android:background="@color/colorGray"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="最新功法"
+            android:textColor="@color/textNo"
+            android:textSize="20sp" />
+
+        <TextView
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/book_latest_top_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="更多>" />
+    </LinearLayout>
+
+
+</LinearLayout>

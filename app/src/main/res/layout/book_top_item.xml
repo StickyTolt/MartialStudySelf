@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/book_top_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="武术门派"
+        android:textColor="@color/textNo"
+        android:textSize="20sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/book_top_body"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:numColumns="5"></android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>
