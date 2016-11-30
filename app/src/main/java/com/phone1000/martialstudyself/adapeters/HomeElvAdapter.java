@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.phone1000.martialstudyself.R;
 import com.phone1000.martialstudyself.constants.HttpUrl;
 import com.phone1000.martialstudyself.constants.MyUrl;
+import com.phone1000.martialstudyself.interfaces.HomeParentListener;
 import com.phone1000.martialstudyself.model.HomeModel;
 
 import org.xutils.image.ImageOptions;
@@ -32,7 +33,11 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
     private LayoutInflater inflater;
     private boolean isChecked = false;
     private int[] size = {7, 7, 7, 7};
+    private HomeParentListener listener;
 
+    public void setListener(HomeParentListener listener) {
+        this.listener = listener;
+    }
 
     public HomeElvAdapter(Context context, List<HomeModel> data) {
         inflater = LayoutInflater.from(context);
@@ -114,7 +119,8 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
             holder = (ViewHolderParent) convertView.getTag();
         }
         holder.parent_title.setText(getGroup(groupPosition + 1).getDesc());
-
+        holder.parent_more.setTag(groupPosition + 1);
+        holder.parent_more.setOnClickListener(this);
         return convertView;
     }
 
@@ -131,23 +137,23 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
                     holder = (ViewHolderChild) convertView.getTag();
                 }
 
-                    if (childPosition == 6 && size[groupPosition] != 14) {
-                        holder.child_more.setVisibility(View.VISIBLE);
-                    } else {
-                        holder.child_more.setVisibility(View.GONE);
-                        holder.child_jump.setVisibility(View.GONE);
-                    }
+                if (childPosition == 6 && size[groupPosition] != 14) {
+                    holder.child_more.setVisibility(View.VISIBLE);
+                } else {
+                    holder.child_more.setVisibility(View.GONE);
+                    holder.child_jump.setVisibility(View.GONE);
+                }
 
-                    holder.child_title.setText(getChild(groupPosition + 1, childPosition).getInfo_title());
-                    holder.child_read_count.setText(getChild(groupPosition + 1, childPosition).getInfo_read_count());
-                    holder.child_reply_count.setText(getChild(groupPosition + 1, childPosition).getInfo_reply_count());
-                    x.image().bind(holder.child_image, MyUrl.HEADER_URL + getChild(groupPosition + 1, childPosition).getInfo_img_path(),options);
-                    if (childPosition == 6 && size[groupPosition] != 14) {
-                        holder.child_more.setVisibility(View.VISIBLE);
-                    } else {
-                        holder.child_more.setVisibility(View.GONE);
-                        holder.child_jump.setVisibility(View.GONE);
-                    }
+                holder.child_title.setText(getChild(groupPosition + 1, childPosition).getInfo_title());
+                holder.child_read_count.setText(getChild(groupPosition + 1, childPosition).getInfo_read_count());
+                holder.child_reply_count.setText(getChild(groupPosition + 1, childPosition).getInfo_reply_count());
+                x.image().bind(holder.child_image, MyUrl.HEADER_URL + getChild(groupPosition + 1, childPosition).getInfo_img_path(), options);
+                if (childPosition == 6 && size[groupPosition] != 14) {
+                    holder.child_more.setVisibility(View.VISIBLE);
+                } else {
+                    holder.child_more.setVisibility(View.GONE);
+                    holder.child_jump.setVisibility(View.GONE);
+                }
 
                 if (isLastChild && childPosition != 6) {
                     holder.child_jump.setVisibility(View.VISIBLE);
@@ -195,16 +201,35 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
 
     @Override
     public void onClick(View v) {
-        int position = (int) v.getTag();
-        size[position] = 14;
-        Log.e(TAG, "onClick: " + position );
-        notifyDataSetChanged();
+        switch (v.getId()) {
+            case R.id.child_more_one:
+                int position_one = (int) v.getTag();
+                size[position_one] = 14;
+                Log.e(TAG, "onClick: " + position_one);
+                notifyDataSetChanged();
+                break;
+            case R.id.child_more:
+                int position = (int) v.getTag();
+                size[position] = 14;
+                Log.e(TAG, "onClick: " + position);
+                notifyDataSetChanged();
+                break;
+            case R.id.parent_more:
+                int group = (int) v.getTag();
+                if (listener!=null) {
+                    listener.parentMoreClick(group);
+                }
+                break;
+        }
+
     }
 
 
     public static class ViewHolderParent {
         @ViewInject(R.id.parent_title)
         TextView parent_title;
+        @ViewInject(R.id.parent_more)
+        TextView parent_more;
 
         public ViewHolderParent(View itemView) {
             x.view().inject(this, itemView);
@@ -248,7 +273,7 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
         ImageView child_more_one;
 
         public ViewHolderChildOne(View itemView) {
-            x.view().inject(this,itemView);
+            x.view().inject(this, itemView);
         }
     }
 
