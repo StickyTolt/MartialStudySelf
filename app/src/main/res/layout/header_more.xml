@@ -4,10 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <GridView
-        android:id="@+id/item_cyclopedia_child_two_gv"
-        android:layout_width="match_parent"
-        android:numColumns="4"
-        android:layout_height="345dp"/>
+
+        <GridView
+            android:id="@+id/header_more_gv"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:numColumns="4" />
+
 
 </LinearLayout>

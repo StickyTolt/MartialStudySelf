@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <GridView
-        android:id="@+id/item_cyclopedia_child_two_gv"
+
+    <ListView
+        android:id="@+id/fragment_more_lv"
         android:layout_width="match_parent"
-        android:numColumns="4"
-        android:layout_height="345dp"/>
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>

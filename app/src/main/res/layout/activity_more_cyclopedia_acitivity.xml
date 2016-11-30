@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.phone1000.martialstudyself.activitys.MoreCyclopediaAcitivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:id="@+id/more_cyclopedia_back"
+            android:layout_margin="10dp"
+            android:src="@mipmap/back"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="武术百科"
+            android:gravity="center"
+            android:textSize="21dp"
+            android:textColor="@color/blackDefault"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/more_cyclopedia_tablayout"
+        android:layout_width="match_parent"
+        app:tabIndicatorColor="@color/blueLove"
+        android:layout_height="40dp"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/more_cyclopedia_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

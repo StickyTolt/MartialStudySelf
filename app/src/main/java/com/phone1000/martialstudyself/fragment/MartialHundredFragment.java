@@ -1,5 +1,6 @@
 package com.phone1000.martialstudyself.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.phone1000.martialstudyself.R;
+import com.phone1000.martialstudyself.activitys.MoreCyclopediaAcitivity;
 import com.phone1000.martialstudyself.adapters.CyclopediaAdapter;
 import com.phone1000.martialstudyself.constants.HttpUrl;
 import com.phone1000.martialstudyself.interfaces.ICyclopediaMore;
@@ -52,7 +53,7 @@ public class MartialHundredFragment extends Fragment implements ExpandableListVi
     }
 
     private void initView() {
-        adapter = new CyclopediaAdapter(null,getContext());
+        adapter = new CyclopediaAdapter(null, getContext());
         mELV.setAdapter(adapter);
         adapter.setiCyclopediaMore(this);
 
@@ -100,7 +101,6 @@ public class MartialHundredFragment extends Fragment implements ExpandableListVi
         });
 
 
-
         mELV.setOnChildClickListener(this);
         mELV.setOnGroupClickListener(this);
 
@@ -108,17 +108,42 @@ public class MartialHundredFragment extends Fragment implements ExpandableListVi
 
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+        List<Integer> childCount = adapter.getChildCount();
+        List<CyclopediaModel> data = adapter.getData();
+        if (groupPosition != 2 && groupPosition != 3 && childCount.get(groupPosition) == childPosition + 1) {
+            // 更多的点击跳转
+            jumpToMore(groupPosition);
+        } else {
+            //这里是条目的点击跳转
+
+        }
         return false;
     }
 
     @Override
     public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-
         return true;
     }
 
+
+    private void jumpToMore(int groutPosition) {
+        List<CyclopediaModel> data = adapter.getData();
+        // url_end
+        String link = data.get(groutPosition).getLink();
+        String url = HttpUrl.CYCLOPEDIA_MORE + link.substring(link.indexOf("?"), link.length());
+        Log.e(TAG, "jumpToMore: 这个就是传说中的网址+++" + url);
+        // name
+        String desc = data.get(groutPosition).getDesc();
+        Bundle bundle = new Bundle();
+        bundle.putString("url", url);
+        bundle.putString("name", desc);
+        Intent intent = new Intent(getActivity(), MoreCyclopediaAcitivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
     @Override
-    public void requestInfoId(String name) {
-        Toast.makeText(getContext(), "这样子是正确的", Toast.LENGTH_SHORT).show();
+    public void requestGroupPosition(int groupPosition) {
+        jumpToMore(groupPosition);
     }
 }

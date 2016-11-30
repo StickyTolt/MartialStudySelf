@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,6 +36,14 @@ public class CyclopediaAdapter extends BaseExpandableListAdapter implements View
 
     public void setiCyclopediaMore(ICyclopediaMore iCyclopediaMore) {
         this.iCyclopediaMore = iCyclopediaMore;
+    }
+
+    public List<CyclopediaModel> getData() {
+        return data;
+    }
+
+    public List<Integer> getChildCount() {
+        return childCount;
     }
 
     public CyclopediaAdapter(List<CyclopediaModel> data, Context context) {
@@ -140,9 +149,8 @@ public class CyclopediaAdapter extends BaseExpandableListAdapter implements View
         } else {
             holderParent = (ViewHolderParent) convertView.getTag();
         }
-
         holderParent.title.setText(getGroup(groupPosition).getDesc());
-        holderParent.more.setTag(data.get(groupPosition).getDesc());
+        holderParent.more.setTag(groupPosition);
         holderParent.more.setOnClickListener(this);
         return convertView;
     }
@@ -165,7 +173,7 @@ public class CyclopediaAdapter extends BaseExpandableListAdapter implements View
                 holderChild.childCount.setText("  " + child.getInfo_read_count());
                 holderChild.childQipao.setText("  " + child.getInfo_reply_count());
                 holderChild.childTitle.setText(child.getInfo_title());
-                String url = "http://www.wushu520.com/" + child.getInfo_img_path();
+                String url = "http://www.wushu520.com" + child.getInfo_img_path();
                 x.image().bind(holderChild.childImage, url, options);
 
                 break;
@@ -179,11 +187,12 @@ public class CyclopediaAdapter extends BaseExpandableListAdapter implements View
                     holderOne = (ViewHolderOne) convertView.getTag();
                 }
                 int infoId = getChild(groupPosition, childPosition).getInfo_id();
-                holderOne.oneText.setTag(data.get(groupPosition).getDesc());
+
+//                holderOne.oneText.setTag(data.get(groupPosition).getLink());
                 holderOne.oneImage.setTag(groupPosition);
 
                 holderOne.oneImage.setOnClickListener(this);
-                holderOne.oneText.setOnClickListener(this);
+//                holderOne.oneText.setOnClickListener(this);
 
                 switch (moreType.get(groupPosition)) {
                     case 11:
@@ -197,7 +206,10 @@ public class CyclopediaAdapter extends BaseExpandableListAdapter implements View
                 }
                 break;
             case 2:
-                convertView = inflater.inflate(R.layout.item_cyclopedia_two_child,parent,false);
+                convertView = inflater.inflate(R.layout.item_cyclopedia_child_two,parent,false);
+                GridView mGridView = (GridView) convertView.findViewById(R.id.item_cyclopedia_child_two_gv);
+                ItemTwoAdapter adapter = new ItemTwoAdapter(data.get(groupPosition).getList(), parent.getContext());
+                mGridView.setAdapter(adapter);
 
                 break;
         }
@@ -213,14 +225,6 @@ public class CyclopediaAdapter extends BaseExpandableListAdapter implements View
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.item_cyclorpedia_parent_more:
-            case R.id.item_cyclopedia_more_text:
-                // 这里做接口跳转
-                Log.e(TAG, "onClick: 这里是传输的数据，千万别错+++" + v.getTag());
-                if (iCyclopediaMore != null) {
-                    iCyclopediaMore.requestInfoId((String) v.getTag());
-                }
-                break;
             case R.id.item_cyclopedia_more_image:
                 int tag = (int) v.getTag();
                 childCount.remove(tag);
@@ -229,6 +233,12 @@ public class CyclopediaAdapter extends BaseExpandableListAdapter implements View
                 moreType.add(tag, 22);
                 notifyDataSetChanged();
                 v.setVisibility(View.GONE);
+                break;
+            case R.id.item_cyclorpedia_parent_more:
+                Log.e(TAG, "onClick: 我确实点击了啊！！！！" + v.getTag() );
+                if (iCyclopediaMore != null) {
+                    iCyclopediaMore.requestGroupPosition((Integer) v.getTag());
+                }
                 break;
         }
     }

@@ -6,5 +6,4 @@ package com.phone1000.martialstudyself.interfaces;
 public interface INotifyAddRes {
 
     void addResForI();
-
 }
