@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.phone1000.martialstudyself.R;
+import com.phone1000.martialstudyself.interfaces.IItemMoreItem;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -26,8 +27,9 @@ public class MoreAdapter extends BaseAdapter implements CompoundButton.OnChecked
     private List<String> data;
     private LayoutInflater inflater;
     private List<Integer> checkORno;
+    private IItemMoreItem iItemMoreItem;
 
-    public MoreAdapter(List<String> data, Context context) {
+    public MoreAdapter(List<String> data, Context context,IItemMoreItem iItemMoreItem) {
         if (data == null) {
             data = new ArrayList<>();
         }
@@ -35,6 +37,7 @@ public class MoreAdapter extends BaseAdapter implements CompoundButton.OnChecked
         this.inflater = LayoutInflater.from(context);
         checkORno = new ArrayList<>();
         checkORno.add(1);
+        this.iItemMoreItem = iItemMoreItem;
         for (int i = 0; i < data.size() - 1; i++) {
             checkORno.add(0);
         }
@@ -67,12 +70,11 @@ public class MoreAdapter extends BaseAdapter implements CompoundButton.OnChecked
             holder = (ViewHolder) convertView.getTag();
         }
         holder.mBox.setText(getItem(position));
-        for (int i = 0; i < checkORno.size() ; i++) {
-            if (checkORno.get(i) == 1) {
-                holder.mBox.setChecked(true);
-            }else {
-                holder.mBox.setChecked(false);
-            }
+
+        if (checkORno.get(position) == 1) {
+            holder.mBox.setChecked(true);
+        } else {
+            holder.mBox.setChecked(false);
         }
 
         holder.mBox.setTag(position);
@@ -83,7 +85,23 @@ public class MoreAdapter extends BaseAdapter implements CompoundButton.OnChecked
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        Log.e(TAG, "onCheckedChanged: 你点击的条目是！！！！！----" + buttonView.getTag() );
+        int tag = (int) buttonView.getTag();
+        Log.e(TAG, "onCheckedChanged: 你点击的条目是！！！！！----" + tag);
+        if (isChecked && checkORno.get(tag) == 0) {
+            checkORno.set(tag, 1);
+            for (int i = 0; i < checkORno.size(); i++) {
+                if (i != tag) {
+                    checkORno.set(i, 0);
+                }
+            }
+            notifyDataSetChanged();
+            if (iItemMoreItem != null) {
+                iItemMoreItem.updateLV(tag);
+            }
+        }else if (!isChecked&&checkORno.get(tag)==1){
+            buttonView.setChecked(true);
+        }
+
     }
 
     public class ViewHolder {

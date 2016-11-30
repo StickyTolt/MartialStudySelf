@@ -1,5 +1,6 @@
 package com.phone1000.martialstudyself.adapters;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.phone1000.martialstudyself.R;
+import com.phone1000.martialstudyself.interfaces.INotifyAddRes;
 import com.phone1000.martialstudyself.model.MoreModel;
 
 import org.xutils.image.ImageOptions;
@@ -26,13 +28,20 @@ public class MoreItemAdapter extends BaseAdapter {
     private List<MoreModel.ListBean> data;
     private LayoutInflater inflater;
     private ImageOptions options;
+    private INotifyAddRes iNotifyAddRes;
+
+    public void setiNotifyAddRes(INotifyAddRes iNotifyAddRes) {
+        this.iNotifyAddRes = iNotifyAddRes;
+    }
 
     public MoreItemAdapter(List<MoreModel.ListBean> data, Context context) {
         if (data == null) {
             data = new ArrayList<>();
         }
         this.data = data;
-//        data.add(0, new MoreModel.ListBean());
+        if (data.size() > 0) {
+            this.data.add(new MoreModel.ListBean());
+        }
         this.inflater = LayoutInflater.from(context);
         options = new ImageOptions.Builder()
                 .setFailureDrawableId(R.mipmap.kungfu1)
@@ -43,28 +52,30 @@ public class MoreItemAdapter extends BaseAdapter {
     public void updateRes(List<MoreModel.ListBean> listBeen) {
         if (listBeen != null) {
             data.clear();
-//            data.add(new MoreModel.ListBean());
             data.addAll(listBeen);
+            data.add(new MoreModel.ListBean());
             notifyDataSetChanged();
         }
     }
 
     public void addRes(List<MoreModel.ListBean> list) {
         if (list != null) {
+            data.remove(data.size() - 1);
             data.addAll(list);
+            data.add(new MoreModel.ListBean());
             notifyDataSetChanged();
         }
     }
 
-//    @Override
-//    public int getItemViewType(int position) {
-//        return position != 0 ? 0 : 1;
-//    }
-//
-//    @Override
-//    public int getViewTypeCount() {
-//        return 2;
-//    }
+    @Override
+    public int getItemViewType(int position) {
+        return position != data.size() - 1 ? 0 : 1;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return 2;
+    }
 
     @Override
     public int getCount() {
@@ -97,18 +108,20 @@ public class MoreItemAdapter extends BaseAdapter {
                 holder.childTitle.setText(item.getInfo_title());
                 holder.childCount.setText("  " + item.getInfo_read_count());
                 holder.childQipao.setText("  " + item.getInfo_reply_count());
-                x.image().bind(holder.childImage, "www.wushu520.com" + item.getInfo_img_path(), options);
+                x.image().bind(holder.childImage, "http://www.wushu520.com" + item.getInfo_img_path(), options);
 
                 break;
-//            case 1:
-//                convertView = inflater.inflate(R.layout.header_more, parent, false);
-//                GridView gridView = (GridView) convertView.findViewById(R.id.header_more_gv);
-//                MoreAdapter adapter = new MoreAdapter(WushubaikeModel.getWushubaike().武术名家, parent.getContext());
-//                gridView.setAdapter(adapter);
-//                break;
+            case 1:
+                convertView = inflater.inflate(R.layout.item_upliad, parent, false);
+                if (iNotifyAddRes != null) {
+                    iNotifyAddRes.addResForI();
+                }
+
+                ObjectAnimator animator = ObjectAnimator.ofFloat(((ImageView) convertView.findViewById(R.id.item_upload_image)), "rotation", 0, 3600);
+                animator.setDuration(4000);
+                animator.start();
+                break;
         }
-
-
         return convertView;
     }
 

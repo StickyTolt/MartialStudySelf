@@ -38,7 +38,6 @@ public class MoreCyclopediaAcitivity extends AppCompatActivity implements View.O
     private MoreCyclopediaAdapter adapter;
     private List<Fragment> data;
     private List<String> urlList ;
-    private int anInt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +66,6 @@ public class MoreCyclopediaAcitivity extends AppCompatActivity implements View.O
         for (int i = 0; i < data.size(); i++) {
             if (adapter.getPageTitle(i).equals(name)) {
                 mViewPager.setCurrentItem(i);
-                anInt = i;
             }
         }
 

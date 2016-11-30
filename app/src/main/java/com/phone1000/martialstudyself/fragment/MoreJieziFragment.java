@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.phone1000.martialstudyself.R;
+import com.phone1000.martialstudyself.adapters.MoreItemAdapter;
+import com.phone1000.martialstudyself.constants.HttpUrl;
+import com.phone1000.martialstudyself.interfaces.INotifyAddRes;
+import com.phone1000.martialstudyself.utils.JsonParseAndUpdate;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -19,12 +23,13 @@ import org.xutils.x;
  * Created by my on 2016/11/30.
  */
 @ContentView(R.layout.fragment_more)
-public class MoreJieziFragment extends Fragment {
+public class MoreJieziFragment extends Fragment implements INotifyAddRes {
     private static final String TAG = MoreJieziFragment.class.getSimpleName();
     private RecyclerView mGV;
     @ViewInject(R.id.fragment_more_lv)
     private ListView mLV;
-
+    private int page = 1;
+    private MoreItemAdapter adapter;
 
 
     @Nullable
@@ -40,6 +45,16 @@ public class MoreJieziFragment extends Fragment {
     }
 
     private void initView() {
-
+        adapter = new MoreItemAdapter(null, getContext());
+        mLV.setAdapter(adapter);
+        adapter.setiNotifyAddRes(this);
+        JsonParseAndUpdate.moreItemJPAU(adapter, HttpUrl.MORE_JIEZI + page, JsonParseAndUpdate.UPDATE);
     }
+
+    @Override
+    public void addResForI() {
+        page++;
+        JsonParseAndUpdate.moreItemJPAU(adapter, HttpUrl.MORE_JIEZI + page, JsonParseAndUpdate.ADD);
+    }
+
 }

@@ -6,26 +6,27 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="6dp"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_width="80dp"
             android:id="@+id/two_child_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:src="@mipmap/kungfu5"
-            android:layout_height="80dp" />
+            android:layout_margin="4dp"
+            android:src="@mipmap/kungfu5" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:text="王致和"
-            android:lines="1"
             android:id="@+id/two_child_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="15dp"
             android:gravity="center"
-            android:layout_height="wrap_content" />
+            android:lines="1"
+            android:text="王致和"
+            android:textSize="15dp" />
     </LinearLayout>
 
 </LinearLayout>

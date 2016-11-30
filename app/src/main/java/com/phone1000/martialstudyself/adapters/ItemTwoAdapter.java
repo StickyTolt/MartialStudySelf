@@ -1,6 +1,7 @@
 package com.phone1000.martialstudyself.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,9 +78,9 @@ public class ItemTwoAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.name.setText(getItem(position).getInfo_title());
-        String url = "www.wushu520.com" + getItem(position).getInfo_img_path();
+        String url = "http://www.wushu520.com" + getItem(position).getInfo_img_path();
+        Log.e(TAG, "getView: 这个就是那些加载不出来的网址！！！" + url );
         x.image().bind(holder.image, url, options);
-
         return convertView;
     }
 

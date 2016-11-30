@@ -8,11 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.phone1000.martialstudyself.R;
 import com.phone1000.martialstudyself.adapters.MoreAdapter;
 import com.phone1000.martialstudyself.adapters.MoreItemAdapter;
 import com.phone1000.martialstudyself.constants.HttpUrl;
+import com.phone1000.martialstudyself.interfaces.IItemMoreItem;
+import com.phone1000.martialstudyself.interfaces.INotifyAddRes;
 import com.phone1000.martialstudyself.models.WushubaikeModel;
 import com.phone1000.martialstudyself.utils.JsonParseAndUpdate;
 
@@ -26,23 +29,23 @@ import java.util.List;
  * Created by my on 2016/11/30.
  */
 @ContentView(R.layout.fragment_more)
-public class MoreMingjiaFragment extends Fragment {
+public class MoreMingjiaFragment extends Fragment implements INotifyAddRes, IItemMoreItem {
     private static final String TAG = MoreMingjiaFragment.class.getSimpleName();
     @ViewInject(R.id.fragment_more_lv)
     private ListView mLV;
 
 
-
     private MoreAdapter gvAdapter;
     private MoreItemAdapter lvAdapter;
 
-    private int page = 1 ;
+    private int page = 1;
+    private List<String> data;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return x.view().inject(this,inflater,container);
+        return x.view().inject(this, inflater, container);
     }
 
     @Override
@@ -52,16 +55,29 @@ public class MoreMingjiaFragment extends Fragment {
     }
 
     private void initView() {
-        List<String> data = WushubaikeModel.getWushubaike().武术名家;
+        data = WushubaikeModel.getWushubaike().武术名家;
 
         View header = LayoutInflater.from(getContext()).inflate(R.layout.header_more, null);
         GridView gridView = (GridView) header.findViewById(R.id.header_more_gv);
-        gridView.setAdapter(new MoreAdapter(data,getContext()));
+        gridView.setAdapter(new MoreAdapter(data, getContext(),this));
         mLV.addHeaderView(header);
 
-        lvAdapter = new MoreItemAdapter(null,getContext());
+        lvAdapter = new MoreItemAdapter(null, getContext());
         mLV.setAdapter(lvAdapter);
-        JsonParseAndUpdate.moreItemJPAU(lvAdapter, HttpUrl.MORE_MINGJIA+page , JsonParseAndUpdate.UPDATE);
+        lvAdapter.setiNotifyAddRes(this);
+        JsonParseAndUpdate.moreItemJPAU(lvAdapter, HttpUrl.MORE_MINGJIA + page, JsonParseAndUpdate.UPDATE);
 
+    }
+
+    @Override
+    public void addResForI() {
+        page++;
+        JsonParseAndUpdate.moreItemJPAU(lvAdapter, HttpUrl.MORE_MINGJIA + page, JsonParseAndUpdate.ADD);
+    }
+
+    @Override
+    public void updateLV(int position) {
+        String itemName = data.get(position);
+        Toast.makeText(getContext(), "点击了+++"+ itemName, Toast.LENGTH_SHORT).show();
     }
 }

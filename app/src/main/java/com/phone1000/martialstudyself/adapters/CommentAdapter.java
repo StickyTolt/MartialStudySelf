@@ -121,8 +121,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                 holder.itemView.setOnClickListener(this);
                 break;
             case 1:
-                ObjectAnimator animator = ObjectAnimator.ofFloat(holder.oneImage, "rotation", 0, 36000);
-                animator.setDuration(60000);
+                ObjectAnimator animator = ObjectAnimator.ofFloat(holder.oneImage, "rotation", 0, 3600);
+                animator.setDuration(4000);
                 animator.start();
                 if (iNotifyAddRes != null) {
                     iNotifyAddRes.addResForI();
