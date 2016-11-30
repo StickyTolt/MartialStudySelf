@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@mipmap/icon"/>
+            android:src="@mipmap/icon" />
 
         <ImageView
             android:id="@+id/main_search"
@@ -29,11 +29,9 @@
             android:id="@+id/main_personal"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginRight="5dp"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
             android:src="@mipmap/icon" />
-
-
 
 
     </RelativeLayout>
@@ -44,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="80dp"
-        android:layout_marginTop="60dp"/>
+        android:layout_marginTop="60dp" />
 
 
     <RadioGroup
@@ -57,8 +55,8 @@
         <RadioButton
             android:id="@+id/home_page"
             style="@style/Btn_style"
-            android:drawableTop="@drawable/home_selector"
             android:checked="true"
+            android:drawableTop="@drawable/home_selector"
             android:paddingTop="10dp"
             android:text="首页"
             android:textColor="@drawable/text_selector" />
@@ -66,7 +64,7 @@
         <RadioButton
             android:id="@+id/book"
             style="@style/Btn_style"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@drawable/wugongmiji_selector"
             android:text="功法秘籍"
             android:textColor="@drawable/text_selector" />
 
