@@ -1,6 +1,7 @@
 package com.phone1000.martialstudyself.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,30 +42,6 @@ public class MoreAdapter extends BaseAdapter implements CompoundButton.OnChecked
 
 
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        int tag = (int) buttonView.getTag();
-        if (checkORno.get(tag) == 0) {
-            checkORno.remove(tag);
-            checkORno.add(tag, 1);
-
-            for (int i = 0; i < checkORno.size(); i++) {
-                if (i != tag) {
-                    checkORno.set(i, 0);
-                }
-            }
-        } else {
-            buttonView.setChecked(true);
-            for (int i = 0; i < checkORno.size(); i++) {
-                if (i!=tag) {
-                    checkORno.set(i,0);
-                }
-            }
-        }
-        notifyDataSetChanged();
-
-    }
-
-    @Override
     public int getCount() {
         return data.size();
     }
@@ -90,7 +67,7 @@ public class MoreAdapter extends BaseAdapter implements CompoundButton.OnChecked
             holder = (ViewHolder) convertView.getTag();
         }
         holder.mBox.setText(getItem(position));
-        for (int i = 0; i < checkORno.size() - 1; i++) {
+        for (int i = 0; i < checkORno.size() ; i++) {
             if (checkORno.get(i) == 1) {
                 holder.mBox.setChecked(true);
             }else {
@@ -102,6 +79,11 @@ public class MoreAdapter extends BaseAdapter implements CompoundButton.OnChecked
         holder.mBox.setOnCheckedChangeListener(this);
 
         return convertView;
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        Log.e(TAG, "onCheckedChanged: 你点击的条目是！！！！！----" + buttonView.getTag() );
     }
 
     public class ViewHolder {
