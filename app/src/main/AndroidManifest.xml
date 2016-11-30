@@ -33,7 +33,8 @@
         <activity android:name=".activitys.MrLiActivity" />
         <activity android:name=".activitys.ParentOneActivity" />
         <activity android:name=".activitys.ParentTwoActivity" />
-        <activity android:name=".activitys.ParentThreeActivity"></activity>
+        <activity android:name=".activitys.ParentThreeActivity" />
+        <activity android:name=".activitys.GongFaMiJiMoreActivity"></activity>
     </application>
 
 </manifest>
