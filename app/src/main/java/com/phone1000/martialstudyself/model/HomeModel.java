@@ -69,6 +69,24 @@ public class HomeModel {
         private String topic_title;
         private String topic_reply_count;
         private String topic_add_user;
+        private String info_id;
+        private String topic_id;
+
+        public String getInfo_id() {
+            return info_id;
+        }
+
+        public void setInfo_id(String info_id) {
+            this.info_id = info_id;
+        }
+
+        public String getTopic_id() {
+            return topic_id;
+        }
+
+        public void setTopic_id(String topic_id) {
+            this.topic_id = topic_id;
+        }
 
         public String getTopic_add_user() {
             return topic_add_user;
