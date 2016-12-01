@@ -1,11 +1,13 @@
 package com.phone1000.martialstudyself;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -21,11 +23,14 @@ import org.xutils.x;
 import java.lang.reflect.InvocationTargetException;
 
 @ContentView(R.layout.activity_main)
-public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     @ViewInject(R.id.main_controller)
     private RadioGroup mController;
-
+    @ViewInject(R.id.main_search)
+    private ImageView found ;
+    @ViewInject(R.id.main_personal)
+    private ImageView user;
 
     private Fragment mShowFragment;
 
@@ -49,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         mShowFragment = new HomePageFargment();
         transaction.add(R.id.main_container, mShowFragment, HomePageFargment.TAG);
         transaction.commit();
-
+        user.setOnClickListener(this);
     }
 
     @Override
@@ -110,5 +115,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         }
         BaseApp.removeAllActivity();
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

@@ -8,6 +8,7 @@
         <GridView
             android:id="@+id/header_more_gv"
             android:layout_width="match_parent"
+            android:background="@color/colorSkin"
             android:layout_height="480dp"
             android:numColumns="4" />
 
