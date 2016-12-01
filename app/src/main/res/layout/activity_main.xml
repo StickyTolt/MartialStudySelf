@@ -7,31 +7,46 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:background="#fff"
         android:gravity="center_vertical">
 
         <ImageView
             android:layout_width="50dp"
+            android:layout_centerVertical="true"
             android:layout_height="50dp"
+            android:id="@+id/main_icon"
             android:src="@mipmap/icon" />
+
+        <ImageView
+            android:layout_toRightOf="@+id/main_icon"
+            android:src="@mipmap/zixuewushu"
+            android:layout_margin="1dp"
+            android:layout_centerVertical="true"
+            android:layout_width="110dp"
+            android:layout_height="match_parent" />
+
 
         <ImageView
             android:id="@+id/main_search"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignBottom="@+id/main_personal"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="60dp"
-            android:src="@mipmap/icon" />
+            android:layout_toLeftOf="@+id/main_personal"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="6dp"
+
+            android:layout_centerVertical="true"
+            android:src="@mipmap/found" />
 
         <ImageView
             android:id="@+id/main_personal"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
-            android:src="@mipmap/icon" />
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/user" />
 
 
     </RelativeLayout>
@@ -71,14 +86,14 @@
         <RadioButton
             android:id="@+id/martial_hundred"
             style="@style/Btn_style"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@drawable/cyclopedia_icon"
             android:text="武术百科"
             android:textColor="@drawable/text_selector" />
 
         <RadioButton
             android:id="@+id/talk_martial"
             style="@style/Btn_style"
-            android:drawableTop="@mipmap/ic_launcher"
+            android:drawableTop="@drawable/comment_icon"
             android:text="论武堂"
             android:textColor="@drawable/text_selector" />
     </RadioGroup>

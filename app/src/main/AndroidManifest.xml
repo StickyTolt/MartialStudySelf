@@ -3,7 +3,7 @@
     package="com.phone1000.martialstudyself">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +35,8 @@
         <activity android:name=".activitys.MrLiActivity" />
         <activity android:name=".activitys.ParentOneActivity" />
         <activity android:name=".activitys.ParentThreeActivity" />
-        <activity android:name=".activitys.GongFaMiJiMoreActivity"></activity>
+        <activity android:name=".activitys.GongFaMiJiMoreActivity" />
+        <activity android:name=".activitys.FirstStartActivity"></activity>
     </application>
 
 </manifest>

@@ -39,7 +39,6 @@ public class BookTopPagerItemFragment extends Fragment implements AdapterView.On
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ;
         layout = inflater.inflate(R.layout.topitem_fragment, container, false);
         return layout;
     }
