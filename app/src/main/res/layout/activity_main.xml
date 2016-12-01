@@ -7,14 +7,24 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:background="#fff"
         android:gravity="center_vertical">
 
         <ImageView
             android:layout_width="50dp"
+            android:layout_centerVertical="true"
             android:layout_height="50dp"
+            android:id="@+id/main_icon"
             android:src="@mipmap/icon" />
+
+        <ImageView
+            android:layout_toRightOf="@+id/main_icon"
+            android:src="@mipmap/zixuewushu"
+            android:layout_margin="1dp"
+            android:layout_centerVertical="true"
+            android:layout_width="110dp"
+            android:layout_height="match_parent" />
 
 
         <ImageView
