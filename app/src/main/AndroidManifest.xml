@@ -36,7 +36,8 @@
         <activity android:name=".activitys.ParentOneActivity" />
         <activity android:name=".activitys.ParentThreeActivity" />
         <activity android:name=".activitys.GongFaMiJiMoreActivity" />
-        <activity android:name=".activitys.FirstStartActivity"></activity>
+        <activity android:name=".activitys.FirstStartActivity" />
+        <activity android:name=".activitys.MiJiWebActivity"></activity>
     </application>
 
 </manifest>
