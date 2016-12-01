@@ -43,7 +43,6 @@ import okhttp3.Call;
 @ContentView(R.layout.book_fragment)
 public class BookFragment extends Fragment implements BookTopPagerAdapter.SendViewPagerListener, View.OnClickListener {
 
-
     public static final String TAG = BookFragment.class.getSimpleName();
 
 

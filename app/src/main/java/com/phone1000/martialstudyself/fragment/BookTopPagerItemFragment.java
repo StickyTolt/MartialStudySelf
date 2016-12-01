@@ -22,6 +22,7 @@ import com.phone1000.martialstudyself.adapters.BookTopItemAdapter;
 public class BookTopPagerItemFragment extends Fragment implements AdapterView.OnItemClickListener {
 
 
+
     private static final String TAG = BookTopPagerItemFragment.class.getSimpleName();
     private View layout;
     private GridView mGridView;

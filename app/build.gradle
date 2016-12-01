@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+    compile 'com.zhy:flowlayout-lib:1.0.3'
     compile 'com.zhy:okhttputils:2.6.2'
     compile 'jp.wasabeef:picasso-transformations:2.1.0'
     compile fileTree(include: ['*.jar'], dir: 'libs')

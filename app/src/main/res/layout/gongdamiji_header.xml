@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -16,50 +17,50 @@
             android:text="分类"
             android:textSize="20sp" />
 
-        <GridView
+        <com.zhy.view.flowlayout.TagFlowLayout
+            app:max_select="1"
             android:id="@+id/gongfamiji_fenlei"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:numColumns="4"></GridView>
+            android:layout_height="match_parent"></com.zhy.view.flowlayout.TagFlowLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="120dp"-->
+        <!--android:orientation="horizontal">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="子类"
-            android:textSize="20sp" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="子类"-->
+            <!--android:textSize="20sp" />-->
 
-        <GridView
-            android:id="@+id/gongfamiji_zilei"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:numColumns="3"></GridView>
+        <!--<GridView-->
+            <!--android:id="@+id/gongfamiji_zilei"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:numColumns="3"></GridView>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:orientation="horizontal">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="类型"
-            android:textSize="20sp" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="类型"-->
+            <!--android:textSize="20sp" />-->
 
-        <GridView
-            android:id="@+id/gongfamiji_leixing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:numColumns="3"></GridView>
+        <!--<GridView-->
+            <!--android:id="@+id/gongfamiji_leixing"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:numColumns="3"></GridView>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 </LinearLayout>
