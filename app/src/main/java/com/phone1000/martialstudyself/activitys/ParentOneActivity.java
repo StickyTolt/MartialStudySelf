@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.phone1000.martialstudyself.R;
 import com.phone1000.martialstudyself.adapeters.ParentOneVPAdapter;
+import com.phone1000.martialstudyself.bases.BaseActivity;
 import com.phone1000.martialstudyself.fragment.ParentOneAllFragment;
 import com.phone1000.martialstudyself.fragment.ParentOneContextFragment;
 import com.phone1000.martialstudyself.fragment.ParentOneHappyFragment;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ContentView(R.layout.activity_parent_one)
-public class ParentOneActivity extends AppCompatActivity implements View.OnClickListener {
+public class ParentOneActivity extends BaseActivity implements View.OnClickListener {
     @ViewInject(R.id.parent_one_tab)
     private TabLayout mTab;
     @ViewInject(R.id.parent_one_viewpager)

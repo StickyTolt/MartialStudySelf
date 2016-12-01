@@ -26,15 +26,13 @@
         <activity android:name=".activitys.ItemActivity" />
         <activity android:name=".activitys.RegisterActivity" />
         <activity android:name=".activitys.CommentActivity" />
-        <activity android:name=".activitys.CompatActivity" />
         <activity android:name=".activitys.ExperienceActivity" />
         <activity android:name=".activitys.HomePositionActivity" />
         <activity android:name=".activitys.HomeSecondActivity" />
-        <activity android:name=".activitys.MartialActivity" />
         <activity android:name=".activitys.MoreCyclopediaAcitivity" />
         <activity android:name=".activitys.MrLiActivity" />
         <activity android:name=".activitys.ParentOneActivity" />
-        <activity android:name=".activitys.ParentThreeActivity" />
+        <activity android:name=".activitys.ParentTwoActivity"/>
         <activity android:name=".activitys.GongFaMiJiMoreActivity" />
         <activity android:name=".activitys.FirstStartActivity"></activity>
     </application>

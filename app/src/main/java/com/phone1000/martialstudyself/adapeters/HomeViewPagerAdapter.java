@@ -1,19 +1,31 @@
 package com.phone1000.martialstudyself.adapeters;
 
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
+
+import com.phone1000.martialstudyself.interfaces.ViewPagerClickListener;
+
+import org.xutils.common.Callback;
 
 import java.util.List;
 
 /**
  * Created by 马金利 on 2016/11/28.
  */
-public class HomeViewPagerAdapter extends PagerAdapter {
+public class HomeViewPagerAdapter extends PagerAdapter implements View.OnClickListener {
 
+    private static final String TAG = HomeViewPagerAdapter.class.getSimpleName();
     private List<ImageView> data;
+
+    private ViewPagerClickListener listener;
+
+    public void setListener(ViewPagerClickListener listener) {
+        this.listener = listener;
+    }
 
     public HomeViewPagerAdapter(List<ImageView> data) {
         this.data = data;
@@ -33,6 +45,7 @@ public class HomeViewPagerAdapter extends PagerAdapter {
             parent.removeView(view);
         }
         container.addView(data.get(position));
+        data.get(position).setOnClickListener(this);
         return data.get(position);
     }
 
@@ -52,4 +65,14 @@ public class HomeViewPagerAdapter extends PagerAdapter {
 //        super.destroyItem(container, position, object);
         container.removeView(data.get(position));
     }
+
+    @Override
+    public void onClick(View v) {
+        if (listener!=null) {
+            listener.imageClickListener();
+            Log.e(TAG, "onClick: "  );
+        }
+    }
+
+
 }

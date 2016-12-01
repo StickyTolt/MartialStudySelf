@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.phone1000.martialstudyself.R;
+import com.phone1000.martialstudyself.bases.BaseActivity;
 import com.phone1000.martialstudyself.constants.MyUrl;
 
 import org.json.JSONException;
@@ -23,7 +24,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 @ContentView(R.layout.activity_home_second)
-public class HomeSecondActivity extends AppCompatActivity {
+public class HomeSecondActivity extends BaseActivity {
     private static final String TAG = HomeSecondActivity.class.getSimpleName();
     @ViewInject(R.id.home_second_image)
     private ImageView image;

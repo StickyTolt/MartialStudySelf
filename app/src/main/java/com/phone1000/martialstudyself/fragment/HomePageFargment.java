@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -23,20 +20,19 @@ import android.widget.LinearLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.phone1000.martialstudyself.R;
-import com.phone1000.martialstudyself.activitys.CompatActivity;
 import com.phone1000.martialstudyself.activitys.ExperienceActivity;
 import com.phone1000.martialstudyself.activitys.HomePositionActivity;
 import com.phone1000.martialstudyself.activitys.HomeSecondActivity;
-import com.phone1000.martialstudyself.activitys.MartialActivity;
+import com.phone1000.martialstudyself.activitys.MoreCyclopediaAcitivity;
 import com.phone1000.martialstudyself.activitys.MrLiActivity;
 import com.phone1000.martialstudyself.activitys.ParentOneActivity;
-import com.phone1000.martialstudyself.activitys.ParentThreeActivity;
 import com.phone1000.martialstudyself.activitys.ParentTwoActivity;
 import com.phone1000.martialstudyself.adapeters.HomeElvAdapter;
 import com.phone1000.martialstudyself.adapeters.HomeViewPagerAdapter;
 import com.phone1000.martialstudyself.constants.HttpUrl;
 import com.phone1000.martialstudyself.constants.MyUrl;
 import com.phone1000.martialstudyself.interfaces.HomeParentListener;
+import com.phone1000.martialstudyself.interfaces.ViewPagerClickListener;
 import com.phone1000.martialstudyself.model.HomeModel;
 
 import org.json.JSONArray;
@@ -55,7 +51,7 @@ import java.util.List;
  * Created by 马金利 on 2016/11/27.
  */
 @ContentView(R.layout.home_page_fragment)
-public class HomePageFargment extends Fragment implements ViewPager.OnPageChangeListener, Handler.Callback, ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener, View.OnClickListener, HomeParentListener {
+public class HomePageFargment extends Fragment implements ViewPager.OnPageChangeListener, Handler.Callback, ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener,  HomeParentListener, ViewPagerClickListener {
 
     private static final int PLAY = 100;
     @ViewInject(R.id.home_page_elv)
@@ -145,6 +141,7 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
                     mVPadapter = new HomeViewPagerAdapter(imgList);
                     mViewPager.setAdapter(mVPadapter);
                     mViewPager.setCurrentItem(1);
+                    mVPadapter.setListener(HomePageFargment.this);
                     mVPadapter.notifyDataSetChanged();
                     adapter.updateRes(data);
                     for (int i = 0; i < adapter.getGroupCount(); i++) {
@@ -271,29 +268,7 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
         return true;
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent();
-        switch (mViewPager.getCurrentItem()) {
-            case 0:
-                intent.setClass(getContext(), ExperienceActivity.class);
-                intent.putExtra("link", title.get(0));
-                break;
-            case 1:
-                intent.setClass(getContext(), CompatActivity.class);
-                intent.putExtra("link", title.get(1));
-                break;
-            case 2:
-                intent.setClass(getContext(), MartialActivity.class);
-                intent.putExtra("link", title.get(2));
-                break;
-            case 3:
-                intent.setClass(getContext(), MrLiActivity.class);
-                intent.putExtra("link", title.get(3));
-                break;
-        }
-        startActivity(intent);
-    }
+
 
 
     @Override
@@ -318,7 +293,10 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
                 intent.setClass(getContext(),ParentTwoActivity.class);
                 break;
             case 3:
-                intent.setClass(getContext(),ParentThreeActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("name","全部");
+                intent.putExtras(bundle);
+                intent.setClass(getContext(),MoreCyclopediaAcitivity.class);
                 break;
             /*case 4:
                *//* FragmentManager manager = getActivity().getSupportFragmentManager();
@@ -327,6 +305,29 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
                 transaction.replace(R.id.main_container,talkMartialFragment,TalkMartialFragment.TAG);
                 transaction.commit();*//*
                 break;*/
+        }
+        startActivity(intent);
+    }
+
+    @Override
+    public void imageClickListener() {
+        Intent intent = new Intent();
+        switch (mViewPager.getCurrentItem()) {
+            case 1:
+                intent.setClass(getContext(),ExperienceActivity.class);
+                intent.putExtra("id",5514 +"");
+                break;
+            case 2:
+                intent.setClass(getContext(),ExperienceActivity.class);
+                intent.putExtra("id",10726 +"");
+                break;
+            case 3:
+                intent.setClass(getContext(),ExperienceActivity.class);
+                intent.putExtra("id",10966 +"");
+                break;
+            case 4:
+                intent.setClass(getContext(), MrLiActivity.class);
+                break;
         }
         startActivity(intent);
     }

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+
+        android:id="@+id/view_pager_image"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/view_pager_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="体验"
+        android:textColor="#000"
+        android:textSize="12sp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@+id/view_pager_image"
+        android:layout_alignTop="@+id/view_pager_image"/>
+
+    <TextView
+        android:id="@+id/view_pager_from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="作者/来源："
+        android:textColor="#000"
+        android:textSize="12sp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@+id/view_pager_image"
+        android:layout_below="@+id/view_pager_title"/>
+
+    <TextView
+        android:id="@+id/view_pager_net"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中华武术网"
+        android:textColor="@color/grayDefault"
+        android:textSize="12sp"
+        android:layout_marginBottom="5dp"
+        android:layout_toRightOf="@+id/view_pager_from"
+        android:layout_below="@+id/view_pager_title"/>
+
+    <TextView
+        android:id="@+id/view_pager_last"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="最后更新时间："
+        android:textColor="#000"
+        android:textSize="12sp"
+        android:layout_toRightOf="@+id/view_pager_image"
+        android:layout_below="@+id/view_pager_from"/>
+    <TextView
+        android:id="@+id/view_pager_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="最后更新时间"
+        android:textColor="@color/grayDefault"
+        android:textSize="12sp"
+        android:layout_toRightOf="@+id/view_pager_last"
+        android:layout_alignBottom="@+id/view_pager_last"/>
+    <TextView
+        android:id="@+id/view_pager_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="最后更新时间"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/view_pager_image"/>
+
+    <TextView
+        android:id="@+id/xian"
+        android:layout_below="@+id/view_pager_des"
+        android:background="#19a7b7"
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
+
+    <TextView
+        android:id="@+id/mulu"
+        android:layout_below="@+id/xian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="目录"
+        android:textColor="#000"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/xian2"
+        android:layout_below="@+id/mulu"
+        android:background="@color/grayDefault"
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
+
+
+
+</RelativeLayout>

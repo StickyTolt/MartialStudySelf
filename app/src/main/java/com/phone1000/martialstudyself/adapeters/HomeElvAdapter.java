@@ -31,7 +31,6 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
     private final ImageOptions options;
     private List<HomeModel> data;
     private LayoutInflater inflater;
-    private boolean isChecked = false;
     private int[] size = {7, 7, 7, 7};
     private HomeParentListener listener;
 

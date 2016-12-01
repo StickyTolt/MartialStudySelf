@@ -3,10 +3,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.phone1000.martialstudyself.activitys.MrLiActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activitys.HomePositionActivity">
+
+    <RelativeLayout
+        android:id="@+id/activity_item_rl_1"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/view_four_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:onClick="backClick"
+            android:layout_centerVertical="true"
+            android:layout_margin="7dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="详细内容"
+            android:textColor="#333333"
+            android:textSize="22dp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/activity_item_rl_1"
+        android:layout_marginBottom="55dp"
+        android:background="#f4f1f1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/activity_item_rl_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+
+                <TextView
+                    android:id="@+id/view_four_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="#000"
+                    android:lines="2"/>
+                <TextView
+                    android:id="@+id/view_four_time"
+                    android:layout_below="@+id/view_four_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_alignBottom="@+id/view_four_time"
+                    android:id="@+id/home_position_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="中华武术网"
+                    android:layout_toRightOf="@+id/view_four_time"
+                    android:layout_marginLeft="10dp"/>
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+            <WebView
+                android:id="@+id/view_four_web"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_item_rl_2"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="11dp"
+                android:background="#f4f1f1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/view_four_web"
+                android:background="#0d94d7"/>
+
+            <WebView
+                android:id="@+id/view_four_web_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_four_web"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="11dp"
+                android:layout_marginTop="12dp"
+                android:background="#f4f1f1" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="4dp"
+            android:background="@color/grayDefault" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="#ffffff"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="5dp">
+
+            <TextView
+                android:id="@+id/activity_item_reply"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="3dp"
+                android:drawableLeft="@mipmap/write"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="  回复楼主" />
+
+
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>
