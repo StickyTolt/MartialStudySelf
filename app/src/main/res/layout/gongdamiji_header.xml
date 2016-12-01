@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
@@ -18,49 +18,51 @@
             android:textSize="20sp" />
 
         <com.zhy.view.flowlayout.TagFlowLayout
-            app:max_select="1"
             android:id="@+id/gongfamiji_fenlei"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></com.zhy.view.flowlayout.TagFlowLayout>
+            android:layout_height="wrap_content"
+            app:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
 
     </LinearLayout>
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="120dp"-->
-        <!--android:orientation="horizontal">-->
+    <LinearLayout
+        android:id="@+id/gongfamiji_zilei_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="子类"-->
-            <!--android:textSize="20sp" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="子类"
+            android:textSize="20sp" />
 
-        <!--<GridView-->
-            <!--android:id="@+id/gongfamiji_zilei"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:numColumns="3"></GridView>-->
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/gongfamiji_zilei"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
 
-    <!--</LinearLayout>-->
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:orientation="horizontal">-->
+    </LinearLayout>
 
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="类型"-->
-            <!--android:textSize="20sp" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <!--<GridView-->
-            <!--android:id="@+id/gongfamiji_leixing"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:numColumns="3"></GridView>-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="类型"
+            android:textSize="20sp" />
 
-    <!--</LinearLayout>-->
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/gongfamiji_leixing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

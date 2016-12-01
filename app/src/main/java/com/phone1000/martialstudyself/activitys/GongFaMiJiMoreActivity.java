@@ -1,12 +1,15 @@
 package com.phone1000.martialstudyself.activitys;
 
+import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -26,10 +29,11 @@ import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import okhttp3.Call;
 
-public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToRefreshBase.OnRefreshListener2<ListView>{
+public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {
 
     private PullToRefreshListView mPullToRefresh;
     private ListView mListView;
@@ -37,21 +41,19 @@ public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToR
     private GridView mGridFenlei;
     private GridView mGridZiLei;
     private GridView mGridLeiXing;
-    private String[] fenlei = {"全部", "武术门派", "武术器械", "外国功夫", "全部", "书籍图文", "视频教程", "电子书下载"};
-    private String[] zilei = {};
+    private String[] fenlei = {"全部", "武术门派", "武术器械", "外国功夫"};
+    private String[] zileimenpai = {"少林", "武当", "峨眉", "太极拳", "八卦掌", "形意拳", "心意拳", "意拳&大成拳", "八极拳", "长拳", "南拳", "咏春拳", "通背拳", "劈挂拳", "三皇炮锤", "戳脚", "翻子拳", "查拳", "地躺拳", "象形拳", "气功", "散打&搏击&格斗", "擒拿", "防身自卫", "摔跤", "其他功夫"};
+    private String[] zileiqiixe = {"刀术", "枪术", "剑术", "棍术", "斧法", "鞭法", "棒法", "其他器械"};
+    private String[] zileiwaiguo = {"截拳道", "跆拳道", "泰拳", "拳击", "巴西柔术", "菲律宾短棍", "柔道", "空手道", "合气道", "剑道", "忍术", "桑搏", "卡柔肯拳"};
     private String[] leixing = {"全部", "书籍图文", "视频教程", "电子书下载"};
-    private List<String> nNames = new ArrayList<String>();
-
-    private String[] mVals = new String[]
-            {"Hello", "Android", "Weclome Hi ", "Button", "TextView", "Hello",
-                    "Android", "Weclome", "Button ImageView", "TextView", "Helloworld",
-                    "Android", "Weclome Hello", "Button Text", "TextView"};
 
     private int page = 1;
-    private Object dataStateDown;
     private String TAG = GongFaMiJiMoreActivity.class.getSimpleName();
     private TagFlowLayout mFlowLayout;
+    private TagFlowLayout mFlowLayoutZiLei;
+    private TagFlowLayout mFlowLayoutLeiXing;
     private LayoutInflater mInflater;
+    private LinearLayout mZiLeill;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +72,14 @@ public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToR
         mListView.setAdapter(adapter);
         getData(State.DOWN);
 
-        View inflate = LayoutInflater.from(this).inflate(R.layout.gongdamiji_header, null);
-        //
+        final View inflate = LayoutInflater.from(this).inflate(R.layout.gongdamiji_header, null);
+        mZiLeill = ((LinearLayout) inflate.findViewById(R.id.gongfamiji_zilei_ll));
+        mZiLeill.setVisibility(View.GONE);
+
+        mFlowLayoutZiLei = ((TagFlowLayout) inflate.findViewById(R.id.gongfamiji_zilei));
+        // 分类
         mFlowLayout = ((TagFlowLayout) inflate.findViewById(R.id.gongfamiji_fenlei));
-        for (int i = 0; i < fenlei.length; i++) {
-            nNames.add(fenlei[i]);
-        }
-        mFlowLayout.setAdapter(new TagAdapter<String>(mVals) {
+        mFlowLayout.setAdapter(new TagAdapter<String>(fenlei) {
             @Override
             public View getView(FlowLayout parent, int position, String s) {
                 TextView tv = (TextView) mInflater.inflate(R.layout.flowlayout_tag,
@@ -85,7 +88,70 @@ public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToR
                 return tv;
             }
         });
+        mFlowLayout.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
+            @Override
+            public void onSelected(Set<Integer> selectPosSet) {
+                Log.e(TAG, "onSelected: " + selectPosSet.size() + "--" + selectPosSet.toString());
+                for (final int i : selectPosSet) {
+                    switch (i) {
+                        case 0:
+                            Log.e(TAG, "onSelected: " + "全部");
+                            mZiLeill.setVisibility(View.GONE);
+                            break;
+                        case 1:
+                            mZiLeill.setVisibility(View.VISIBLE);
+                            mFlowLayoutZiLei.setAdapter(new TagAdapter<String>(zileimenpai) {
+                                @Override
+                                public View getView(FlowLayout parent, int position, String s) {
+                                    TextView tv = (TextView) mInflater.inflate(R.layout.flowlayout_tag,
+                                            mFlowLayoutZiLei, false);
+                                    tv.setText(s);
+                                    return tv;
+                                }
+                            });
+                            break;
+                        case 2:
+                            mZiLeill.setVisibility(View.VISIBLE);
+                            mFlowLayoutZiLei.setAdapter(new TagAdapter<String>(zileiqiixe) {
+                                @Override
+                                public View getView(FlowLayout parent, int position, String s) {
+                                    TextView tv = (TextView) mInflater.inflate(R.layout.flowlayout_tag,
+                                            mFlowLayoutZiLei, false);
+                                    tv.setText(s);
+                                    return tv;
+                                }
+                            });
+                            break;
+                        case 3:
+                            mZiLeill.setVisibility(View.VISIBLE);
+                            mFlowLayoutZiLei.setAdapter(new TagAdapter<String>(zileiwaiguo) {
+                                @Override
+                                public View getView(FlowLayout parent, int position, String s) {
+                                    TextView tv = (TextView) mInflater.inflate(R.layout.flowlayout_tag,
+                                            mFlowLayoutZiLei, false);
+                                    tv.setText(s);
+                                    return tv;
+                                }
+                            });
+                            break;
+                    }
+                }
 
+            }
+        });
+        // 子类
+
+        // 类型
+        mFlowLayoutLeiXing = ((TagFlowLayout) inflate.findViewById(R.id.gongfamiji_leixing));
+        mFlowLayoutLeiXing.setAdapter(new TagAdapter<String>(fenlei) {
+            @Override
+            public View getView(FlowLayout parent, int position, String s) {
+                TextView tv = (TextView) mInflater.inflate(R.layout.flowlayout_tag,
+                        mFlowLayoutLeiXing, false);
+                tv.setText(s);
+                return tv;
+            }
+        });
 //        mGridFenlei = (GridView) inflate.findViewById(R.id.gongfamiji_fenlei);
 //        mGridFenlei.setAdapter(new GongFaMijiHeaderGridAdapter(fenlei, this));
 //        mGridZiLei = (GridView) inflate.findViewById(R.id.gongfamiji_zilei);
