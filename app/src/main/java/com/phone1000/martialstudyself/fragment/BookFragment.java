@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import com.google.gson.Gson;
 import com.phone1000.martialstudyself.BaseApp;
 import com.phone1000.martialstudyself.R;
 import com.phone1000.martialstudyself.activitys.GongFaMiJiMoreActivity;
+import com.phone1000.martialstudyself.activitys.MiJiWebActivity;
 import com.phone1000.martialstudyself.adapters.BookContentAdapter;
 import com.phone1000.martialstudyself.adapters.BookTopPagerAdapter;
 import com.phone1000.martialstudyself.adapters.BookTopZeroFragmentPagerAdapter;
@@ -41,7 +43,7 @@ import okhttp3.Call;
  * Created by 马金利 on 2016/11/27.
  */
 @ContentView(R.layout.book_fragment)
-public class BookFragment extends Fragment implements BookTopPagerAdapter.SendViewPagerListener, View.OnClickListener {
+public class BookFragment extends Fragment implements BookTopPagerAdapter.SendViewPagerListener, View.OnClickListener, AdapterView.OnItemClickListener {
 
     public static final String TAG = BookFragment.class.getSimpleName();
 
@@ -108,6 +110,8 @@ public class BookFragment extends Fragment implements BookTopPagerAdapter.SendVi
                         adapter.updateRes(data);
                     }
                 });
+
+        mFragmentLatest.setOnItemClickListener(this);
         //=============header=========================================
         View header = LayoutInflater.from(getContext()).inflate(R.layout.book_latest_header, null);
 
@@ -213,5 +217,15 @@ public class BookFragment extends Fragment implements BookTopPagerAdapter.SendVi
                 startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getActivity(), MiJiWebActivity.class);
+        int info_id = adapter.getItem(position - 1).getInfo_id();
+        int info_reply_count = adapter.getItem(position - 1).getInfo_reply_count();
+        intent.putExtra("count", info_reply_count);
+        intent.putExtra("id", info_id);
+        startActivity(intent);
     }
 }

@@ -1,11 +1,13 @@
 package com.phone1000.martialstudyself.activitys;
 
+import android.content.Intent;
 import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -19,6 +21,7 @@ import com.phone1000.martialstudyself.BaseApp;
 import com.phone1000.martialstudyself.R;
 import com.phone1000.martialstudyself.adapters.BookContentAdapter;
 import com.phone1000.martialstudyself.constants.HttpParams;
+import com.phone1000.martialstudyself.constants.HttpUrl;
 import com.phone1000.martialstudyself.constants.HttpUrlSecond;
 import com.phone1000.martialstudyself.model.LatestGongFa;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -33,7 +36,7 @@ import java.util.Set;
 
 import okhttp3.Call;
 
-public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToRefreshBase.OnRefreshListener2<ListView> {
+public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToRefreshBase.OnRefreshListener2<ListView>, AdapterView.OnItemClickListener {
 
     private PullToRefreshListView mPullToRefresh;
     private ListView mListView;
@@ -42,10 +45,11 @@ public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToR
     private GridView mGridZiLei;
     private GridView mGridLeiXing;
     private String[] fenlei = {"全部", "武术门派", "武术器械", "外国功夫"};
-    private String[] zileimenpai = {"少林", "武当", "峨眉", "太极拳", "八卦掌", "形意拳", "心意拳", "意拳&大成拳", "八极拳", "长拳", "南拳", "咏春拳", "通背拳", "劈挂拳", "三皇炮锤", "戳脚", "翻子拳", "查拳", "地躺拳", "象形拳", "气功", "散打&搏击&格斗", "擒拿", "防身自卫", "摔跤", "其他功夫"};
-    private String[] zileiqiixe = {"刀术", "枪术", "剑术", "棍术", "斧法", "鞭法", "棒法", "其他器械"};
-    private String[] zileiwaiguo = {"截拳道", "跆拳道", "泰拳", "拳击", "巴西柔术", "菲律宾短棍", "柔道", "空手道", "合气道", "剑道", "忍术", "桑搏", "卡柔肯拳"};
+    private String[] zileimenpai = {"全部", "少林", "武当", "峨眉", "太极拳", "八卦掌", "形意拳", "心意拳", "意拳&大成拳", "八极拳", "长拳", "南拳", "咏春拳", "通背拳", "劈挂拳", "三皇炮锤", "戳脚", "翻子拳", "查拳", "地躺拳", "象形拳", "气功", "散打&搏击&格斗", "擒拿", "防身自卫", "摔跤", "其他功夫"};
+    private String[] zileiqiixe = {"全部", "刀术", "枪术", "剑术", "棍术", "斧法", "鞭法", "棒法", "其他器械"};
+    private String[] zileiwaiguo = {"全部", "截拳道", "韩国跆拳道", "泰拳", "拳击", "巴西柔术", "菲律宾短棍", "日本柔道", "日本空手道", "日本合气道", "日本剑道", "日本忍术", "俄罗斯桑搏", "美国卡柔肯拳", "其他外国功夫"};
     private String[] leixing = {"全部", "书籍图文", "视频教程", "电子书下载"};
+    private String GONGFAMIJI_URL = HttpUrlSecond.GONGDAMIJI;
 
     private int page = 1;
     private String TAG = GongFaMiJiMoreActivity.class.getSimpleName();
@@ -95,7 +99,6 @@ public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToR
                 for (final int i : selectPosSet) {
                     switch (i) {
                         case 0:
-                            Log.e(TAG, "onSelected: " + "全部");
                             mZiLeill.setVisibility(View.GONE);
                             break;
                         case 1:
@@ -136,7 +139,6 @@ public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToR
                             break;
                     }
                 }
-
             }
         });
         // 子类
@@ -159,6 +161,7 @@ public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToR
 //        mGridLeiXing = (GridView) inflate.findViewById(R.id.gongfamiji_leixing);
 //        mGridLeiXing.setAdapter(new GongFaMijiHeaderGridAdapter(leixing, this));
         mListView.addHeaderView(inflate);
+        mListView.setOnItemClickListener(this);
 
     }
 
@@ -210,6 +213,16 @@ public class GongFaMiJiMoreActivity extends AppCompatActivity implements PullToR
     @Override
     public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
         getData(State.UP);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, MiJiWebActivity.class);
+        int info_id = adapter.getItem(position - 1).getInfo_id();
+        int info_reply_count = adapter.getItem(position - 1).getInfo_reply_count();
+        intent.putExtra("count", info_reply_count);
+        intent.putExtra("id", info_id);
+        startActivity(intent);
     }
 
     enum State {
