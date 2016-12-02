@@ -31,10 +31,12 @@ import com.phone1000.martialstudyself.adapeters.HomeElvAdapter;
 import com.phone1000.martialstudyself.adapeters.HomeViewPagerAdapter;
 import com.phone1000.martialstudyself.constants.HttpUrl;
 import com.phone1000.martialstudyself.constants.MyUrl;
+import com.phone1000.martialstudyself.event.GroupFourEvent;
 import com.phone1000.martialstudyself.interfaces.HomeParentListener;
 import com.phone1000.martialstudyself.interfaces.ViewPagerClickListener;
 import com.phone1000.martialstudyself.model.HomeModel;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.xutils.common.Callback;
@@ -54,6 +56,7 @@ import java.util.List;
 public class HomePageFargment extends Fragment implements ViewPager.OnPageChangeListener, Handler.Callback, ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupClickListener,  HomeParentListener, ViewPagerClickListener {
 
     private static final int PLAY = 100;
+    private static final int CLICK_FOUR = 99;
     @ViewInject(R.id.home_page_elv)
     private ExpandableListView mElv;
 
@@ -288,25 +291,25 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
         switch (group) {
             case 1:
                 intent.setClass(getContext(),ParentOneActivity.class);
+                startActivity(intent);
                 break;
             case 2:
                 intent.setClass(getContext(),ParentTwoActivity.class);
+                startActivity(intent);
                 break;
             case 3:
                 Bundle bundle = new Bundle();
                 bundle.putString("name","全部");
                 intent.putExtras(bundle);
                 intent.setClass(getContext(),MoreCyclopediaAcitivity.class);
+                startActivity(intent);
                 break;
-            /*case 4:
-               *//* FragmentManager manager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                TalkMartialFragment talkMartialFragment = new TalkMartialFragment();
-                transaction.replace(R.id.main_container,talkMartialFragment,TalkMartialFragment.TAG);
-                transaction.commit();*//*
-                break;*/
+            case 4:
+                GroupFourEvent event = new GroupFourEvent(CLICK_FOUR);
+                EventBus.getDefault().post(event);
+                break;
         }
-        startActivity(intent);
+
     }
 
     @Override

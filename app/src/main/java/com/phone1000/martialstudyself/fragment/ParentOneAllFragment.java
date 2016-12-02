@@ -1,18 +1,22 @@
 package com.phone1000.martialstudyself.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.phone1000.martialstudyself.R;
+import com.phone1000.martialstudyself.activitys.HomePositionActivity;
 import com.phone1000.martialstudyself.adapeters.ParentAdapter;
 import com.phone1000.martialstudyself.constants.MyUrl;
 import com.phone1000.martialstudyself.interfaces.LoadingIsShown;
+import com.phone1000.martialstudyself.interfaces.ParentItemClickListener;
 import com.phone1000.martialstudyself.model.ParentModel;
 import com.phone1000.martialstudyself.utils.ParentJsonParse;
 
@@ -28,7 +32,7 @@ import java.util.List;
  * Created by 马金利 on 2016/11/30.
  */
 @ContentView(R.layout.parent_one_all_fragment)
-public class ParentOneAllFragment extends Fragment implements LoadingIsShown {
+public class ParentOneAllFragment extends Fragment implements LoadingIsShown, AdapterView.OnItemClickListener {
 
     @ViewInject(R.id.parent_all_listview)
     private ListView mLisView;
@@ -52,6 +56,7 @@ public class ParentOneAllFragment extends Fragment implements LoadingIsShown {
         adapter = new ParentAdapter(getContext(),null);
         mLisView.setAdapter(adapter);
         adapter.setIsShown(this);
+        mLisView.setOnItemClickListener(this);
         ParentJsonParse.ParentParse(adapter,MyUrl.PARENT_ONE_ALL_URL + page);
     }
 
@@ -60,4 +65,14 @@ public class ParentOneAllFragment extends Fragment implements LoadingIsShown {
         page++;
         ParentJsonParse.ParentParseLoad(adapter,MyUrl.PARENT_ONE_ALL_URL + page);
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        int info_id = adapter.getItem(position).getInfo_id();
+        Intent intent = new Intent(getContext(), HomePositionActivity.class);
+        intent.putExtra("id",info_id);
+        startActivity(intent);
+    }
+
+
 }

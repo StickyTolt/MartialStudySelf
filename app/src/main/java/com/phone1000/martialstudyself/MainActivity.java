@@ -11,11 +11,14 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.phone1000.martialstudyself.event.GroupFourEvent;
 import com.phone1000.martialstudyself.fragment.BookFragment;
 import com.phone1000.martialstudyself.fragment.HomePageFargment;
 import com.phone1000.martialstudyself.fragment.MartialHundredFragment;
 import com.phone1000.martialstudyself.fragment.TalkMartialFragment;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -46,6 +49,33 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         initView();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Subscribe
+    public void onEvent(GroupFourEvent event){
+
+        mController.check(R.id.talk_martial);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+    }
+
+
+
+
+
     private void initView() {
 
         mController.setOnCheckedChangeListener(this);
@@ -55,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         transaction.add(R.id.main_container, mShowFragment, HomePageFargment.TAG);
         transaction.commit();
         user.setOnClickListener(this);
+
     }
 
     @Override
@@ -121,4 +152,5 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     public void onClick(View v) {
 
     }
+
 }

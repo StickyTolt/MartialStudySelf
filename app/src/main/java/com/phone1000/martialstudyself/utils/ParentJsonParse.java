@@ -31,6 +31,7 @@ public class ParentJsonParse {
                 List<ParentModel.ListBean> data = model.getList();
                 Log.e(TAG, "onSuccess: " + data );
                 adapter.updateRes(data);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -60,6 +61,7 @@ public class ParentJsonParse {
                 ParentModel model = gson.fromJson(result, ParentModel.class);
                 List<ParentModel.ListBean> data = model.getList();
                 adapter.addRes(data);
+                adapter.notifyDataSetChanged();
             }
 
             @Override

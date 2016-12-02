@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.phone1000.martialstudyself.R;
 import com.phone1000.martialstudyself.constants.MyUrl;
 import com.phone1000.martialstudyself.interfaces.LoadingIsShown;
+import com.phone1000.martialstudyself.interfaces.ParentItemClickListener;
 import com.phone1000.martialstudyself.model.ParentModel;
 import com.phone1000.martialstudyself.models.CommentModel;
 
@@ -31,6 +32,7 @@ public class ParentAdapter extends BaseAdapter {
     private List<ParentModel.ListBean> data;
     private LayoutInflater inflater;
     private LoadingIsShown isShown;
+
 
     public void setIsShown(LoadingIsShown isShown) {
         this.isShown = isShown;
@@ -107,6 +109,7 @@ public class ParentAdapter extends BaseAdapter {
                 holder.reply.setText(getItem(position).getInfo_reply_count() + "");
                 holder.title.setText(getItem(position).getInfo_title() + "");
                 x.image().bind(holder.image, MyUrl.HEADER_URL + getItem(position).getInfo_img_path(),options);
+
                 break;
             case 1:
                 ViewHolderOne holderOne = null;
@@ -125,6 +128,7 @@ public class ParentAdapter extends BaseAdapter {
                 }
                 break;
         }
+
         return convertView;
     }
 

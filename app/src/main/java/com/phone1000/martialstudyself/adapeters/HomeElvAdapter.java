@@ -155,7 +155,9 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
                 }
 
                 if (isLastChild && childPosition != 6) {
+                    holder.child_jump.setTag(groupPosition+ 1);
                     holder.child_jump.setVisibility(View.VISIBLE);
+                    holder.child_jump.setOnClickListener(this);
                 }
                 holder.child_more.setTag(groupPosition);
                 holder.child_more.setOnClickListener(this);
@@ -182,7 +184,9 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
                 holderOne.child_author_one.setText(getChild(groupPosition + 1, childPosition).getTopic_add_user());
 
                 if (isLastChild && childPosition != 6) {
+                    holderOne.child_jump_one.setTag(groupPosition + 1);
                     holderOne.child_jump_one.setVisibility(View.VISIBLE);
+                    holderOne.child_jump_one.setOnClickListener(this);
                 }
                 holderOne.child_more_one.setTag(groupPosition);
                 holderOne.child_more_one.setOnClickListener(this);
@@ -215,8 +219,23 @@ public class HomeElvAdapter extends BaseExpandableListAdapter implements View.On
                 break;
             case R.id.parent_more:
                 int group = (int) v.getTag();
-                if (listener!=null) {
+                Log.e(TAG, "onClick: parent " + group );
+                if (listener != null) {
                     listener.parentMoreClick(group);
+                }
+                break;
+            case R.id.child_jump:
+                int group_jump = (int) v.getTag();
+                Log.e(TAG, "onClick: child " + group_jump );
+                if (listener != null) {
+                    listener.parentMoreClick(group_jump);
+                }
+                break;
+            case R.id.child_jump_one:
+                int group_jump_one = (int) v.getTag();
+                Log.e(TAG, "onClick: childone " + group_jump_one );
+                if (listener != null) {
+                    listener.parentMoreClick(group_jump_one);
                 }
                 break;
         }
