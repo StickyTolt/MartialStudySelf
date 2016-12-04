@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ import java.util.List;
 @ContentView(R.layout.parent_one_all_fragment)
 public class ParentOneAllFragment extends Fragment implements LoadingIsShown, AdapterView.OnItemClickListener {
 
+    private static final String TAG = ParentOneAllFragment.class.getSimpleName();
     @ViewInject(R.id.parent_all_listview)
     private ListView mLisView;
     private ParentAdapter adapter;
@@ -70,7 +72,7 @@ public class ParentOneAllFragment extends Fragment implements LoadingIsShown, Ad
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         int info_id = adapter.getItem(position).getInfo_id();
         Intent intent = new Intent(getContext(), HomePositionActivity.class);
-        intent.putExtra("id",info_id);
+        intent.putExtra("id",info_id + "");
         startActivity(intent);
     }
 

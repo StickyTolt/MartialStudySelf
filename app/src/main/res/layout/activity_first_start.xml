@@ -10,4 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <Button
+        android:id="@+id/first_start_btn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="立即体验"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#fff"
+        android:background="#0ea2b3"/>
+
 </RelativeLayout>

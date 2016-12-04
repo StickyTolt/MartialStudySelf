@@ -1,5 +1,7 @@
 package com.phone1000.martialstudyself;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,11 +13,14 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.phone1000.martialstudyself.activitys.SearchActivity;
 import com.phone1000.martialstudyself.event.GroupFourEvent;
 import com.phone1000.martialstudyself.fragment.BookFragment;
 import com.phone1000.martialstudyself.fragment.HomePageFargment;
 import com.phone1000.martialstudyself.fragment.MartialHundredFragment;
 import com.phone1000.martialstudyself.fragment.TalkMartialFragment;
+import com.phone1000.martialstudyself.utils.DBHelperStart;
+import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -31,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     @ViewInject(R.id.main_controller)
     private RadioGroup mController;
     @ViewInject(R.id.main_search)
-    private ImageView found ;
+    private ImageView search ;
     @ViewInject(R.id.main_personal)
     private ImageView user;
 
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
         x.view().inject(this);
+        BaseApp.setActivity(this);
         initView();
     }
 
@@ -78,6 +84,16 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     private void initView() {
 
+        // 开启安装或升级界面
+//        BaseApp.setActivity(this);
+//        DBHelperStart dbHelperStart = new DBHelperStart(this, "start", null, 1);
+//        SQLiteDatabase db = dbHelperStart.getReadableDatabase();
+
+//        if (!BaseApp.isFirst) {
+//            startActivity(new Intent(this,StartActivity.class));
+//        }
+        startActivity(new Intent(this,StartActivity.class));
+
         mController.setOnCheckedChangeListener(this);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -85,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         transaction.add(R.id.main_container, mShowFragment, HomePageFargment.TAG);
         transaction.commit();
         user.setOnClickListener(this);
+        search.setOnClickListener(this);
 
     }
 
@@ -150,7 +167,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     @Override
     public void onClick(View v) {
-
+        Intent intent = new Intent();
+        switch (v.getId()) {
+            case R.id.main_search:
+                intent.setClass(this, SearchActivity.class);
+                break;
+        }
+        startActivity(intent);
     }
 
 }

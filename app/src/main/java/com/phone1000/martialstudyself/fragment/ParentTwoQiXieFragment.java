@@ -104,7 +104,7 @@ public class ParentTwoQiXieFragment extends Fragment implements LoadingIsShown, 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         int info_id = adapter.getItem(position).getInfo_id();
         Intent intent = new Intent(getContext(), HomePositionActivity.class);
-        intent.putExtra("id",info_id);
+        intent.putExtra("id",info_id+ "");
         startActivity(intent);
     }
 }

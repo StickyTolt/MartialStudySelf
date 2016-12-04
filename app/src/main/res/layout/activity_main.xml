@@ -35,7 +35,6 @@
             android:layout_toLeftOf="@+id/main_personal"
             android:layout_marginTop="14dp"
             android:layout_marginBottom="6dp"
-
             android:layout_centerVertical="true"
             android:src="@mipmap/found" />
 
@@ -56,14 +55,14 @@
         android:id="@+id/main_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="50dp"
         android:layout_marginTop="60dp" />
 
 
     <RadioGroup
         android:id="@+id/main_controller"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:layout_gravity="bottom"
         android:orientation="horizontal">
 

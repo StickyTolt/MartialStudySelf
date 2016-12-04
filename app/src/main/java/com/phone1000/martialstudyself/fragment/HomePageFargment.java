@@ -251,13 +251,11 @@ public class HomePageFargment extends Fragment implements ViewPager.OnPageChange
             String info_id = adapter.getChild(groupPosition + 1, childPosition).getTopic_id();
             Intent intent = new Intent(getContext(), HomeSecondActivity.class);
             intent.putExtra("id", info_id);
-            Log.e(TAG, "onChildClick: " + info_id);
             startActivity(intent);
         } else {
             String topic_id = adapter.getChild(groupPosition + 1, childPosition).getInfo_id();
             Intent intent = new Intent(getContext(), HomePositionActivity.class);
             intent.putExtra("id", topic_id);
-            Log.e(TAG, "onChildClick: " + topic_id);
             startActivity(intent);
         }
 

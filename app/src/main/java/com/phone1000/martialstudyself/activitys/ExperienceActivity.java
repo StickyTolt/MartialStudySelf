@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,7 +31,7 @@ import org.xutils.x;
 import java.util.List;
 
 @ContentView(R.layout.activity_experience)
-public class ExperienceActivity extends BaseActivity implements View.OnClickListener {
+public class ExperienceActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private static final String TAG = ExperienceActivity.class.getSimpleName();
     @ViewInject(R.id.view_pager_listview)
     private ListView mListView;
@@ -59,7 +60,6 @@ public class ExperienceActivity extends BaseActivity implements View.OnClickList
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.e(TAG, "onSuccess: " );
                 Gson gson = new Gson();
                 ViewPagerModel viewPagerModel = gson.fromJson(result, ViewPagerModel.class);
                 List<ViewPagerModel.CatalogBean> data = viewPagerModel.getCatalog();
@@ -72,17 +72,16 @@ public class ExperienceActivity extends BaseActivity implements View.OnClickList
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                Log.e(TAG, "onError: " );
+
             }
 
             @Override
             public void onCancelled(CancelledException cex) {
-                Log.e(TAG, "onCancelled: " );
+
             }
 
             @Override
             public void onFinished() {
-                Log.e(TAG, "onFinished: " );
             }
         });
     }
@@ -104,10 +103,19 @@ public class ExperienceActivity extends BaseActivity implements View.OnClickList
         mListView.addFooterView(footer);
         mListView.setAdapter(adapter);
         mListView.addHeaderView(view);
+        mListView.setOnItemClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         this.finish();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        int info_id = adapter.getItem(position).getInfo_id();
+        Intent intent = new Intent(this, HomePositionActivity.class);
+        intent.putExtra("id",info_id + "");
+        startActivity(intent);
     }
 }

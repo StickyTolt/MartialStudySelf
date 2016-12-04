@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.phone1000.martialstudyself.activitys.SearchActivity">
+
+    <RelativeLayout
+        android:id="@+id/activity_item_rl_1"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/search_back"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="7dp"
+            android:onClick="backSecondClick"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="#333333"
+            android:textSize="22dp" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_below="@+id/activity_item_rl_1"
+        android:id="@+id/search_listView"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/search_xian"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/activity_item_rl_1"
+        android:background="@color/grayDefault" />
+
+    <RelativeLayout
+        android:id="@+id/relative_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/search_xian"
+        android:layout_margin="10dp"
+        android:background="@drawable/edittext_style">
+
+        <EditText
+            android:id="@+id/search_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="请输入搜索内容"
+            android:textColorHint="@color/grayDefault"/>
+
+        <ImageView
+            android:id="@+id/seach_found"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/found" />
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/search_text2"
+        android:layout_below="@+id/relative_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="热搜关键词"
+        android:layout_marginLeft="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/guanjianci"
+        android:layout_below="@+id/search_text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <GridView
+            android:id="@+id/search_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="4"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

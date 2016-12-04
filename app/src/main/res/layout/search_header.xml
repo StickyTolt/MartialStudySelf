@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/edittext_style">
+
+        <EditText
+            android:id="@+id/result_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:hint="请输入搜索内容"
+            android:textColorHint="@color/grayDefault"/>
+
+        <ImageView
+            android:id="@+id/result_found"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/found" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import com.phone1000.martialstudyself.constants.HttpParams;
 import com.phone1000.martialstudyself.utils.NetWorkUtil;
 import com.squareup.picasso.Picasso;
+import com.umeng.analytics.MobclickAgent;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.xutils.x;
@@ -32,6 +33,17 @@ public class BaseApp extends Application {
     private static List<Activity> data;
     public static boolean isLogIn = false;
     private static Context context;
+    public static Activity activity;
+
+    public static boolean isFirst = false;
+
+    public static void setIsFirst(boolean isFirst) {
+        BaseApp.isFirst = isFirst;
+    }
+
+    public static void setActivity(Activity activity) {
+        BaseApp.activity = activity;
+    }
 
     public static void setIsLogIn(boolean isLogIn) {
         BaseApp.isLogIn = isLogIn;
@@ -110,6 +122,12 @@ public class BaseApp extends Application {
 
                 .build();
         OkHttpUtils.initClient(client);
+
+
+        String appKey = "5841343604e205645c001525";
+        String channelId = "MYAPP";
+        MobclickAgent.UMAnalyticsConfig umAnalyticsConfig = new MobclickAgent.UMAnalyticsConfig(this,appKey,channelId,MobclickAgent.EScenarioType.E_UM_NORMAL,true);
+        MobclickAgent.startWithConfigure(umAnalyticsConfig);
 
     }
 

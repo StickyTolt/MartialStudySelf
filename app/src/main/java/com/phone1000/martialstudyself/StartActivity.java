@@ -13,8 +13,8 @@ public class StartActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0x200) {
-                Intent intent = new Intent(StartActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(StartActivity.this, MainActivity.class);
+//                startActivity(intent);
                 finish();
             }
         }
@@ -24,6 +24,6 @@ public class StartActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        mHandler.sendEmptyMessageDelayed(0x200,100);
+        mHandler.sendEmptyMessageDelayed(0x200,2000);
     }
 }

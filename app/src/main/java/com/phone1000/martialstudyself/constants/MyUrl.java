@@ -55,4 +55,6 @@ public class MyUrl {
 
     public static final String PARENT_TWO_WAIGUO_URL = "http://m.wushu520.com/Info/ListForAPP?ptype=1&type=103&";
 
+    public static final String SEARCH_URL = "http://m.wushu520.com/Info/SearchGongFaForAPP?ptype=1&key=";
+
 }

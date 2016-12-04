@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.phone1000.martialstudyself.BaseApp;
 import com.phone1000.martialstudyself.R;
+import com.umeng.analytics.MobclickAgent;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -15,6 +16,17 @@ public class BaseActivity extends AppCompatActivity {
         BaseApp.addActivity(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 
     @Override
     protected void onDestroy() {

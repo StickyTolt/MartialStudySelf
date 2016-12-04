@@ -50,6 +50,7 @@ public class HomePositionActivity extends BaseActivity {
         mWeb.setWebViewClient(client);
         mWeb.loadUrl(MyUrl.HOME_SECOND_BODY_URL + id);
         mWebContent.loadUrl(MyUrl.HOME_COMMENT_START + id + MyUrl.HOME_COMMENT_END);
+
         setupView();
     }
 

@@ -49,7 +49,6 @@ public class MrLiActivity extends BaseActivity implements View.OnClickListener {
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.e(TAG, "onSuccess: " );
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     title.setText(jsonObject.getString("info_title"));
@@ -61,17 +60,14 @@ public class MrLiActivity extends BaseActivity implements View.OnClickListener {
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
-                Log.e(TAG, "onError: " );
             }
 
             @Override
             public void onCancelled(CancelledException cex) {
-                Log.e(TAG, "onCancelled: " );
-            }
+        }
 
             @Override
             public void onFinished() {
-                Log.e(TAG, "onFinished: " );
             }
         });
     }

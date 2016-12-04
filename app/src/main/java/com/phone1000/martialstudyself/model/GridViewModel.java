@@ -16,6 +16,8 @@ public class GridViewModel {
 
     public List<String> url = new ArrayList<>();
 
+    public List<String> search = new ArrayList<>();
+
 
 
     public GridViewModel(){
@@ -36,6 +38,13 @@ public class GridViewModel {
         url.add("source=book");
         url.add("source=video");
         url.add("source=pdf");
+
+        search.add("防身术");
+        search.add("八卦掌");
+        search.add("形意拳");
+        search.add("八极拳");
+        search.add("咏春拳");
+        search.add("长拳");
 
     }
 

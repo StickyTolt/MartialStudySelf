@@ -92,18 +92,15 @@ public class ParentOneContextFragment extends Fragment implements LoadingIsShown
     @Override
     public void itemClickListener(int tag) {
         name = tag;
-        Log.e(TAG, "itemClickListener: " + name);
         ObjectAnimator oa = ObjectAnimator.ofFloat(mLisView, "alpha", 0.0f, 0.3f, 0.6f, 0.9f, 1f);
         oa.setDuration(2000);
         oa.start();
         if (name == 0) {
             String url = MyUrl.PARENT_ONE_CONTEXT_URL + MyUrl.PARENT_ONE_CONTEXT_END + page;
             ParentJsonParse.ParentParse(adapter, url);
-            Log.e(TAG, "initView: " + url);
         } else {
             String url = MyUrl.PARENT_ONE_CONTEXT_URL + "tag=" + context.get(name) + "&"+ MyUrl.PARENT_ONE_CONTEXT_END  + page;
             ParentJsonParse.ParentParse(adapter, url);
-            Log.e(TAG, "initView: " + url);
         }
     }
 
@@ -111,7 +108,7 @@ public class ParentOneContextFragment extends Fragment implements LoadingIsShown
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         int info_id = adapter.getItem(position).getInfo_id();
         Intent intent = new Intent(getContext(), HomePositionActivity.class);
-        intent.putExtra("id",info_id);
+        intent.putExtra("id",info_id + "");
         startActivity(intent);
     }
 }
